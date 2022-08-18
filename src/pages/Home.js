@@ -9,31 +9,27 @@ import './Home.css'
     Sending back just the {this.props.name} element doesnt give enough functionality.
 */
 
-class Home extends Component {
-
-    render(){
-        return (
-            <Container fluid style={{backgroundColor: 'burlywood', margin: '0px', padding: '0px'}}>
-                <Row fluid="true" style={{backgroundColor: 'coral', height: '10vh', margin: '0px', padding:'5px'}}>
-                    <Col>
-                        <p>Make this a NAV BAR</p>
-                    </Col>
-                </Row>
-                <Row fluid="true" style={{height: '90vh', width: '100vw', margin: '0px', textAlign: 'center'}}>
-                    <Col xs={3}>
-                        <p>sidebar</p>
-                    </Col>
-                    <Col xs={6}>
-                        <h3>HOME PAGE</h3>
-                    </Col>
-                    <Col xs={3} id='profile'>
-                        <Profile/>
-                    </Col>
-                </Row>
-            </Container>
-        );
-    }
-
+function Home() {
+    return (
+        <Container fluid style={{backgroundColor: 'burlywood', margin: '0px', padding: '0px'}}>
+            <Row fluid="true" style={{backgroundColor: 'coral', height: '10vh', margin: '0px', padding:'5px'}}>
+                <Col>
+                    <p>Make this a NAV BAR</p>
+                </Col>
+            </Row>
+            <Row fluid="true" style={{height: '90vh', width: '100vw', margin: '0px', textAlign: 'center'}}>
+                <Col xs={3}>
+                    <p>sidebar</p>
+                </Col>
+                <Col xs={6}>
+                    <h3>HOME PAGE</h3>
+                </Col>
+                <Col xs={3} id='profile'>
+                    <Profile/>
+                </Col>
+            </Row>
+        </Container>
+    );
 }
 
 export default Home;

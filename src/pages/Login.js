@@ -1,53 +1,61 @@
-import React, { Component } from "react";
+import React, { Component, useEffect, useState } from "react";
 import axios from "axios";
 import { Col, Container, Row } from "react-bootstrap";
 import Home from "./Home";
 
 const PATH = "http://localhost/podfinder/src/user-apis/userlogin.php";
 
-export default class Login extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: "",
-      password: "",
-      loggedin: ""
-    };
-    this.LoginHandler = this.LoginHandler.bind(this);    
-  }
+// MESSES UP WHEN REFRESHING THE PAGE & ALREADY LOGGED IN... just shows "Welcome"... user forgotten
+//works now!?
 
-  LoginHandler(event) {    
-    event.preventDefault();
-    axios({
-      method: "post",
-      url: `${PATH}`,
-      headers: { "content-type": "application/json" },
-      data: this.state
-    })
-    .then((result) => {
-        console.log(result.data);
-        this.setState({
-            loggedin: result.data
+function Login() {
+
+    const [inputs, setInputs] = useState({
+        name: '',
+        password: '',
+        access: false,
+        loggedin: 'Nope'
+    });
+
+    const handleChange = (event) => {
+        const name = event.target.name;
+        const value = event.target.value;
+        setInputs(values => ({...values, [name]: value}))
+    }
+    const LoginHandler = (event)  => {    
+        event.preventDefault();
+        axios({
+        method: "post",
+        url: `${PATH}`,
+        headers: { "content-type": "application/json" },
+        data: inputs
+        })
+        .then((result) => {
+            console.log(result.data);
+            const name = 'loggedin';
+            const value = result.data;
+            setInputs(values => ({...values, [name]: value}))
+            inputs.access = true;            
+        })
+        .catch((error) => {
+            const name = 'error';
+            const value = error.message;
+            setInputs(values => ({...values, [name]: value}))
         });
-    })
-    .catch((error) => this.setState({ error: error.message }));
-  }
-
-  render() {
+    }
     
-    if(this.state.loggedin === 'User Not Found' ){
-
+    if(inputs.loggedin === 'User Not Found' ){
     return(
-      <Container></Container>
+      <Container>User Not Found</Container>
     );  
-
-    }else if(this.state.loggedin !== ''){
+    }else if(inputs.loggedin === inputs.name && inputs.access === true){
+        console.log(inputs.loggedin);
       return(
-        <Home name={this.state.loggedin}/>
-      );
-
+        <Container>
+            Welcome {inputs.name}
+        </Container>
+        );
     } else {
-
     return(
       <Container >
             <h1>Log In</h1>
@@ -58,8 +66,8 @@ export default class Login extends Component {
               id="name"
               name="name"
               placeholder="Enter your name"
-              value={this.state.name}
-              onChange={(e) => this.setState({ name: e.target.value })}
+              value={inputs.name || ""}
+              onChange={handleChange}
             />
             <br />
             <label>Password</label>
@@ -68,18 +76,21 @@ export default class Login extends Component {
               id="password"
               name="password"
               placeholder="Enter your password"
-              value={this.state.password}
-              onChange={(e) => this.setState({password: e.target.value })}
+              value={inputs.password || ""}
+              onChange={handleChange}
             ></input>
+            <br/>
             <br/>
             <input
               type="submit"
               value="Log In"
-              onClick={(e) => this.LoginHandler(e)}
+              onClick={LoginHandler}
             />
           </form>        
       </Container>
       );
     }
-  }
+  
 }
+
+export default Login;
