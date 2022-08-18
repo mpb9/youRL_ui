@@ -22,16 +22,7 @@ class Home extends Component {
                 </Row>
                 <Container style={{backgroundColor: 'burlywood', height: '500px', margin: '0px', padding:'0px'}}>
                     <h1>HOME PAGE</h1>
-
-                    <userContext.Consumer>
-                        {value => (
-                            <Container>
-                                <div>{value.name}</div>
-                                {value.profile}
-                            </Container>
-                        )}
-                    </userContext.Consumer>
-
+                    <div>{this.props.name}</div>
                 </Container>
             </Container>
         );
