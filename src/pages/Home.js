@@ -1,7 +1,7 @@
-import React, { Component, useContext } from 'react';
-import '../App.css';
-import {Container, Row, Col, Button} from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import React, { Component } from 'react';
+import {Container, Row, Col} from 'react-bootstrap';
+import Profile from './Profile';
+import './Home.css'
 
 /*  NEED TO IMPLIMENT useContext (or another hook) in order to 
     return to the homepage with data obtained from login/signup.
@@ -13,17 +13,23 @@ class Home extends Component {
 
     render(){
         return (
-            <Container  style={{backgroundColor: 'burlywood',margin: '0px'}}>
-                <Row style={{backgroundColor: 'coral', height: 'fit-content', margin: '0px', padding:'5px'}}>
-                    <p>Make this a NAV BAR</p>
-                    <Link to='/login'>Login</Link>
-                    <Link to='/signup'>Create Account</Link>
-
+            <Container fluid style={{backgroundColor: 'burlywood', margin: '0px', padding: '0px'}}>
+                <Row fluid="true" style={{backgroundColor: 'coral', height: '10vh', margin: '0px', padding:'5px'}}>
+                    <Col>
+                        <p>Make this a NAV BAR</p>
+                    </Col>
                 </Row>
-                <Container style={{backgroundColor: 'burlywood', height: '500px', margin: '0px', padding:'0px'}}>
-                    <h1>HOME PAGE</h1>
-                    <div>{this.props.name}</div>
-                </Container>
+                <Row fluid="true" style={{height: '90vh', width: '100vw', margin: '0px', textAlign: 'center'}}>
+                    <Col xs={3}>
+                        <p>sidebar</p>
+                    </Col>
+                    <Col xs={6}>
+                        <h3>HOME PAGE</h3>
+                    </Col>
+                    <Col xs={3} id='profile'>
+                        <Profile/>
+                    </Col>
+                </Row>
             </Container>
         );
     }

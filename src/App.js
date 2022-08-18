@@ -5,22 +5,21 @@ import Admin from './admin/Admin';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
+//needed to use col, row, other bootstraps
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 
 function App() {
   return (
     <Router>
-        <div style={{margin: '0px', padding:'0px'}}>
-          <main>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/admin" element={<Admin />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
           </Routes>
-          </main>
-        </div>
-      </Router> 
+    </Router> 
   );
 }
 
