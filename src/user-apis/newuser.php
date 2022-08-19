@@ -18,10 +18,10 @@ $email = $_POST['email'];
 try
 {
   $sql = 'SELECT COUNT(*) FROM user
-      WHERE name = :name AND password = :password';
+      WHERE name = :name OR email = :email';
   $s = $pdo->prepare($sql);
   $s->bindValue(':name', $name);
-  $s->bindValue(':password', $password);
+  $s->bindValue(':email', $email);
   $s->execute();
 }
 catch (PDOException $e)
@@ -34,7 +34,7 @@ catch (PDOException $e)
 $row = $s->fetch();
 
 if ($row[0] > 0){
-    echo ('Username taken');
+    echo ('Taken');
 
 } else {
     try {

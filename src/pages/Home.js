@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {Container, Row, Col} from 'react-bootstrap';
-import Profile from './Profile';
+import LoginHandler from './LoginHandler';
 import './Home.css'
 
 /*  NEED TO IMPLIMENT useContext (or another hook) in order to 
@@ -25,7 +25,7 @@ function Home() {
                     <h3>HOME PAGE</h3>
                 </Col>
                 <Col xs={3} id='profile'>
-                    <Profile/>
+                    <LoginHandler/>
                 </Col>
             </Row>
         </Container>

@@ -1,56 +1,22 @@
-import React, { useReducer, useContext, Children } from 'react';
-import {Container, Row, Col, Button} from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import Login from './Login';
-import './Home.css'
+import React, { Component, useEffect, useState } from "react";
+import axios from "axios";
+import { Button, Col, Container, Row } from "react-bootstrap";
+import Home from "./Home";
+import Login from "./Login";
 
-/*  NEED TO IMPLIMENT useContext (or another hook) in order to 
-    return to the homepage with data obtained from login/signup.
-    Right now, doesn't redirect back to home page (still at local.../login or /signup w/ Home showing).
-    Sending back just the {this.props.name} element doesnt give enough functionality.
-*/
+const PATH = "http://localhost/podfinder/src/user-apis/userlogin.php";
 
-const initialState = {show: "login"}  
-
-function reducer(state, action) {
-switch (action.type) {
-    case 'loggedin':
-        return {show: "loggedin"};
-    case 'signup':
-        return {show: "signup"};
-    case 'login':
-        return initialState(action.payload);
-    default:
-        throw new Error();
-}
-}
+// MESSES UP WHEN REFRESHING THE PAGE & ALREADY LOGGED IN... just shows "Welcome"... user forgotten
+//works now!?
 
 function Profile() {
-    const [state, dispatch] = useReducer(reducer, initialState);
-
-    switch (state.show){
-        case 'loggedin':
-            return (
-                <Container fluid style={{ margin: '0px', padding: '3px'}}>
-                    loggedin
-                </Container>
-            );
-        case 'signup':
-            return (
-                <Container fluid style={{ margin: '0px', padding: '3px'}}>
-                    signup
-                </Container>
-            );
-        case 'login':
-            return (
-                <Container fluid style={{ margin: '0px', padding: '3px'}}>
-                    <Login/>
-                </Container>
-            );
-        default:
-            throw new Error();
-    }
-
+    return(
+    <Container >
+        <h2>User Profile</h2>    
+    </Container>
+    );
+       
+  
 }
 
 export default Profile;
