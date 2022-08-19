@@ -1,21 +1,23 @@
 import React from 'react';
-import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import './App.css';
 import Admin from './admin/Admin';
-import Home from './pages/Home';
+import Login from './pages/Login';
 //needed to use col, row, other bootstraps
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Home from './pages/Home';
 
 
 
 function App() {
   return (
-    <Router>
+    <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="*" element={<Login />} />
+            <Route path="*" element={<Home />} />
             <Route path="/admin" element={<Admin />} />
           </Routes>
-    </Router> 
+    </BrowserRouter> 
   );
 }
 
