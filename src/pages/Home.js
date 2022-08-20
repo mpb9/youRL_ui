@@ -3,6 +3,7 @@ import {Container, Row, Col, Button} from 'react-bootstrap';
 import Profile from './Profile';
 import './Home.css';
 import Login from './Login';
+import Explore from './Explore';
 
 /*  NEED TO IMPLIMENT useContext (or another hook) in order to 
     return to the homepage with data obtained from login/signup.
@@ -25,18 +26,18 @@ function Home({username}) {
     
     if(inputs.access){
         return (
-        <Container fluid style={{backgroundColor: 'burlywood', margin: '0px', padding: '0px'}}>
-                <Row fluid="true" style={{backgroundColor: 'coral', height: '10vh', margin: '0px', padding:'5px'}}>
+        <Container fluid id='bigcontainer'>
+                <Row fluid="true" id='navrow'>
                     <Col>
                         <p>Make this a NAV BAR</p>
                     </Col>
                 </Row>
-                <Row fluid="true" style={{height: '90vh', width: '100vw', margin: '0px', textAlign: 'center'}}>
+                <Row fluid="true" id='bigrow'>
                     <Col xs={3} id='yourstuff'>
                         <p>YOUR PODCASTS</p>
                     </Col>
                     <Col xs={6}>
-                        <h3>HOME PAGE</h3>
+                        <Explore user={username} />
                     </Col>
                     <Col xs={3} id='profile'>
                         <Profile user={username}/>

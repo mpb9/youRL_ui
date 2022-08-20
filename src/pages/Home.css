@@ -10,3 +10,25 @@
     background-color: plum;
     margin: 0px;
 }
+#bigcontainer{
+    background-color: burlywood;
+    margin: 0px; 
+    padding: 0px
+}
+#bigrow{
+    height: 92vh;
+    width: 100vw;
+    margin: 0px;
+    text-align: center;
+}
+#navrow{
+    background-color: coral;
+    height: 8vh; 
+    margin: 0px;
+    padding: 5px;
+}
+#explorecontainer{
+    background-color: coral;
+    margin: 3px; 
+    padding: 3px
+}

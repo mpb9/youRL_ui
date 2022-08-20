@@ -63,58 +63,37 @@ function SignUp() {
         );   
     }else if(inputs.loggedin === 'Taken' ){
         return(
-        <Container fluid style={{backgroundColor: 'burlywood', margin: '0px', padding: '0px'}}>
-          <Row fluid="true" style={{backgroundColor: 'coral', height: '10vh', margin: '0px', padding:'5px'}}>
+        <Container fluid id='bigcontainer'>
+          <Row fluid="true" id='navrow'>
             <Col>
               <p>Make this a NAV BAR</p>
             </Col>
           </Row>
-          <Row fluid="true" style={{height: '90vh', width: '100vw', margin: '0px', textAlign: 'center'}}>
+          <Row fluid="true" id='bigrow'>
             <Col xs={3} id='yourstuff'>
-              <p>YOUR PODCASTS</p>
+              <p>DEFAULT PODCASTS</p>
             </Col>
             <Col xs={6}>
-              <h3>HOME PAGE</h3>
+              <h3>DEFAULT HOME PAGE</h3>
             </Col>
             <Col xs={3} id='profile'>
-                <h1>Create Account</h1>
+                <h3>Create Account</h3>
                 <h6>Username or Email Taken</h6>
                 <form action="#">
-                    <label>Username</label>
-                    <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    placeholder="Enter your name"
-                    value={inputs.name || ""}
-                    onChange={handleChange}
-                    />
-                    <br />
-                    <label>Email</label>
-                    <input
-                    type="text"
-                    id="email"
-                    name="email"
-                    placeholder="Enter your email"
-                    value={inputs.email || ""}
-                    onChange={handleChange}
-                    ></input>
-                    <br />
-                    <label>Password</label>
-                    <input
-                    type="text"
-                    id="password"
-                    name="password"
-                    placeholder="Enter your password"
-                    value={inputs.password || ""}
-                    onChange={handleChange}
-                    ></input>
-                    <br/>
-                    <input
-                    type="submit"
-                    value="Create"
-                    onClick={newUserHandler}
-                    />
+                  <label>Username</label>
+                  <input type="text" id="name" name="name" placeholder="Enter your name"
+                  value={inputs.name || ""} onChange={handleChange} />
+                  <br />
+                  <label>Email</label>
+                  <input type="text" id="email" name="email" placeholder="Enter your email"
+                  value={inputs.email || ""} onChange={handleChange} />
+                  <br />
+                  <label>Password</label>
+                  <input type="text" id="password" name="password" placeholder="Enter your password"
+                  value={inputs.password || ""} onChange={handleChange} />
+                  <br/>
+                  <input type="submit" value="Create"
+                  onClick={newUserHandler} />
                 </form>
                 <br/>
                 <h6>Already have an account?</h6>
@@ -127,57 +106,36 @@ function SignUp() {
     } else {
 
     return (
-        <Container fluid style={{backgroundColor: 'burlywood', margin: '0px', padding: '0px'}}>
-        <Row fluid="true" style={{backgroundColor: 'coral', height: '10vh', margin: '0px', padding:'5px'}}>
+        <Container fluid id='bigcontainer'>
+        <Row fluid="true" id='navrow'>
           <Col>
             <p>Make this a NAV BAR</p>
           </Col>
         </Row>
-        <Row fluid="true" style={{height: '90vh', width: '100vw', margin: '0px', textAlign: 'center'}}>
+        <Row fluid="true" id='bigrow'>
           <Col xs={3} id='yourstuff'>
-            <p>YOUR PODCASTS</p>
+            <p>DEFAULT PODCASTS</p>
           </Col>
           <Col xs={6}>
-            <h3>HOME PAGE</h3>
+            <h3>DEFAULT HOME PAGE</h3>
           </Col>
           <Col xs={3} id='profile'>
-              <h1>Create Account</h1>
+              <h3>Create Account</h3>
               <form action="#">
                   <label>Username</label>
-                  <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  placeholder="Enter your name"
-                  value={inputs.name || ""}
-                  onChange={handleChange}
-                  />
+                  <input type="text" id="name" name="name" placeholder="Enter your name"
+                  value={inputs.name || ""} onChange={handleChange} />
                   <br />
                   <label>Email</label>
-                  <input
-                  type="text"
-                  id="email"
-                  name="email"
-                  placeholder="Enter your email"
-                  value={inputs.email || ""}
-                  onChange={handleChange}
-                  ></input>
+                  <input type="text" id="email" name="email" placeholder="Enter your email"
+                  value={inputs.email || ""} onChange={handleChange} />
                   <br />
                   <label>Password</label>
-                  <input
-                  type="text"
-                  id="password"
-                  name="password"
-                  placeholder="Enter your password"
-                  value={inputs.password || ""}
-                  onChange={handleChange}
-                  ></input>
+                  <input type="text" id="password" name="password" placeholder="Enter your password"
+                  value={inputs.password || ""} onChange={handleChange} />
                   <br/>
-                  <input
-                  type="submit"
-                  value="Create"
-                  onClick={newUserHandler}
-                  />
+                  <input type="submit" value="Create"
+                  onClick={newUserHandler} />
               </form>
               <br/>
               <h6>Already have an account?</h6>

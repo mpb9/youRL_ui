@@ -64,13 +64,13 @@ function Login() {
       );
   } else if(inputs.loggedin === 'User Not Found' ){
       return(
-        <Container fluid style={{backgroundColor: 'burlywood', margin: '0px', padding: '0px'}}>
-          <Row fluid="true" style={{backgroundColor: 'coral', height: '10vh', margin: '0px', padding:'5px'}}>
+        <Container fluid id='bigcontainer'>
+          <Row fluid="true" id='navrow'>
             <Col>
               <p>Make this a NAV BAR</p>
             </Col>
           </Row>
-          <Row fluid="true" style={{height: '90vh', width: '100vw', margin: '0px', textAlign: 'center'}}>
+          <Row fluid="true" id='bigrow'>
             <Col xs={3} id='yourstuff'>
               <p>YOUR PODCASTS</p>
             </Col>
@@ -78,7 +78,7 @@ function Login() {
               <h3>HOME PAGE</h3>
             </Col>
             <Col xs={3} id='profile'>
-              <h1>Log In</h1>
+              <h3>Log In</h3>
               <h6>User Not Found</h6>
               <form action="#">
                 <label>Username</label>
@@ -114,21 +114,21 @@ function Login() {
       );  
     } else {
       return(
-        <Container fluid style={{backgroundColor: 'burlywood', margin: '0px', padding: '0px'}} >
-          <Row fluid="true" style={{backgroundColor: 'coral', height: '10vh', margin: '0px', padding:'5px'}}>
+        <Container fluid id='bigcontainer'>
+          <Row fluid="true" id='navrow'>
             <Col>
               <p>Make this a NAV BAR</p>
             </Col>
           </Row>
-          <Row fluid="true" style={{height: '90vh', width: '100vw', margin: '0px', textAlign: 'center'}}>
+          <Row fluid="true" id='bigrow'>
             <Col xs={3} id='yourstuff'>
-              <p>YOUR PODCASTS</p>
+              <p>DEFAULT PODCASTS</p>
             </Col>
             <Col xs={6}>
-              <h3>HOME PAGE</h3>
+              <h3>DEFAULT HOME PAGE</h3>
             </Col>
             <Col xs={3} id='profile'>
-              <h1>Log In</h1>
+              <h4>Log In</h4>
               <form action="#">
                 <label>Username</label>
                 <input

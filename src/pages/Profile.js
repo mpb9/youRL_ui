@@ -8,14 +8,12 @@ const PATH = "http://localhost/podfinder/src/user-apis/userlogin.php";
 //works now!?
 
 function Profile({user}) {
-    
-    return(
+  return(
     <Container >
-        <h2>{user}'s Profile</h2>    
+      <h3>{user}'s Profile</h3>    
     </Container>
-    );
+  );
     
-  
 }
 
 export default Profile;
