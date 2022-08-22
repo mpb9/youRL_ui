@@ -8,7 +8,7 @@ class Admin extends Component {
             <body>
                 <h1>Site Management</h1>
                 <ul>
-                    <li><a href="http://localhost/podfinder/src/admin/users/">Manage Users</a></li>
+                    <li><a href="http://localhost/mediashare/src/admin/users/">Manage Users</a></li>
                     <li><a href="../">Return to Main Site</a></li>
                 </ul>
             </body>

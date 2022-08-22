@@ -4,6 +4,7 @@ import Profile from './Profile';
 import './Home.css';
 import Login from './Login';
 import Explore from './Explore';
+import { Link } from 'react-router-dom';
 
 /*  NEED TO IMPLIMENT useContext (or another hook) in order to 
     return to the homepage with data obtained from login/signup.
@@ -28,15 +29,18 @@ function Home({username}) {
         return (
         <Container fluid id='bigcontainer'>
                 <Row fluid="true" id='navrow'>
-                    <Col>
-                        <p>Make this a NAV BAR</p>
+                    <Col xs={9}>
+                        <p>youRL</p>
+                    </Col>
+                    <Col xs={3} style={{textAlign: 'right'}}>
+                        <Link to="/admin">Admin</Link>
                     </Col>
                 </Row>
                 <Row fluid="true" id='bigrow'>
                     <Col xs={3} id='yourstuff'>
-                        <p>YOUR PODCASTS</p>
+                        <p>YOUR GROUPS</p>
                     </Col>
-                    <Col xs={6}>
+                    <Col xs={6} id='middlecol'>
                         <Explore user={username} />
                     </Col>
                     <Col xs={3} id='profile'>

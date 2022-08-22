@@ -1,6 +1,6 @@
 <?php
 include_once $_SERVER['DOCUMENT_ROOT'] .
-'/podfinder/src/includes/helpers.inc.php'; ?>
+'/mediashare/src/includes/helpers.inc.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>

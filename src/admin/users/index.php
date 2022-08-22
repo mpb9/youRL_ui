@@ -1,8 +1,8 @@
 <?php
 include_once $_SERVER['DOCUMENT_ROOT'] .
-    '/podfinder/src/includes/magicquotes.inc.php';
+    '/mediashare/src/includes/magicquotes.inc.php';
 
-require_once $_SERVER['DOCUMENT_ROOT'] . '/podfinder/src/includes/access.inc.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/mediashare/src/includes/access.inc.php';
 
 if (!userIsLoggedIn())
 {
@@ -19,7 +19,7 @@ if (!userHasRole('Admin'))
 
 if (isset($_GET['add']))
 {
-  include $_SERVER['DOCUMENT_ROOT'] . '/podfinder/src/includes/db.inc.php';
+  include $_SERVER['DOCUMENT_ROOT'] . '/mediashare/src/includes/db.inc.php';
 
   $pageTitle = 'New User';
   $action = 'addform';
@@ -54,7 +54,7 @@ if (isset($_GET['add']))
 
 if (isset($_GET['addform']))
 {
-  include $_SERVER['DOCUMENT_ROOT'] . '/podfinder/src/includes/db.inc.php';
+  include $_SERVER['DOCUMENT_ROOT'] . '/mediashare/src/includes/db.inc.php';
 
   try
   {
@@ -77,7 +77,7 @@ if (isset($_GET['addform']))
 
   if ($_POST['password'] != '')
   {
-    $password = md5($_POST['password'] . 'pod');
+    $password = md5($_POST['password'] . 'ms');
 
     try
     {
@@ -126,7 +126,7 @@ if (isset($_GET['addform']))
 
 if (isset($_POST['action']) and $_POST['action'] == 'Edit')
 {
-  include $_SERVER['DOCUMENT_ROOT'] . '/podfinder/src/includes/db.inc.php';
+  include $_SERVER['DOCUMENT_ROOT'] . '/mediashare/src/includes/db.inc.php';
 
   try
   {
@@ -198,7 +198,7 @@ if (isset($_POST['action']) and $_POST['action'] == 'Edit')
 
 if (isset($_GET['editform']))
 {
-  include $_SERVER['DOCUMENT_ROOT'] . '/podfinder/src/includes/db.inc.php';
+  include $_SERVER['DOCUMENT_ROOT'] . '/mediashare/src/includes/db.inc.php';
 
   try
   {
@@ -221,7 +221,7 @@ if (isset($_GET['editform']))
 
   if ($_POST['password'] != '')
   {
-    $password = md5($_POST['password'] . 'pod');
+    $password = md5($_POST['password'] . 'ms');
 
     try
     {
@@ -284,7 +284,7 @@ if (isset($_GET['editform']))
 
 if (isset($_POST['action']) and $_POST['action'] == 'Delete')
 {
-  include $_SERVER['DOCUMENT_ROOT'] . '/podfinder/src/includes/db.inc.php';
+  include $_SERVER['DOCUMENT_ROOT'] . '/mediashare/src/includes/db.inc.php';
 
   // Delete role assignments for this user
   try
@@ -321,7 +321,7 @@ if (isset($_POST['action']) and $_POST['action'] == 'Delete')
 }
 
 // Display user list
-include $_SERVER['DOCUMENT_ROOT'] . '/podfinder/src/includes/db.inc.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/mediashare/src/includes/db.inc.php';
 
 try
 {

@@ -1,19 +1,25 @@
 #profile{
-    background-color: plum;
+    background-color: #448665;
     margin: 0px;
 }
 #nostuff{
-    background-color: plum;
+    background-color: #448665;
     margin: 0px;
 }
 #yourstuff{
-    background-color: plum;
+    background-color: #448665;
     margin: 0px;
 }
+#middlecol{
+    margin:0px;
+    background-color: #699E84;
+    height: inherit;
+}
 #bigcontainer{
-    background-color: burlywood;
+    background-color: #699E84;
     margin: 0px; 
-    padding: 0px
+    padding: 0px;
+    height: 100vh;
 }
 #bigrow{
     height: 92vh;
@@ -22,13 +28,38 @@
     text-align: center;
 }
 #navrow{
-    background-color: coral;
+    background-color: #315c47;
     height: 8vh; 
     margin: 0px;
     padding: 5px;
+    width: inherit;
 }
 #explorecontainer{
-    background-color: coral;
-    margin: 3px; 
-    padding: 3px
+    background-color: #699E84;
+    margin: auto; 
+    padding: 3px;
+    padding-top: 5px;
+    margin-top: 5px;
+    width: 100%;
+    height: 98%;
+}
+#explorerow{
+    height: 85%;
+    width: inherit;
+    margin: auto;
+    padding: 0px;
+    -ms-overflow-style: none; /* for Internet Explorer, Edge */
+    scrollbar-width: none; /* for Firefox */
+    overflow-y: scroll; 
+}
+#explorerow::-webkit-scrollbar {
+    display: none;
+}
+#submitLinkRow{
+    height: max-content;
+    width: max-content;
+    margin: auto;
+    background-color: #448665;
+    margin-top: 15px;
+    padding-bottom: 0px;
 }

@@ -10,7 +10,7 @@ function userIsLoggedIn()
       return FALSE;
     }
 
-    $password = md5($_POST['password'] . 'pod');
+    $password = md5($_POST['password'] . 'ms');
 
     if (databaseContainsUser($_POST['name'], $password))
     {

@@ -2,8 +2,8 @@
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: Content-Type");
 
-include $_SERVER['DOCUMENT_ROOT'] . '/podfinder/src/includes/db.inc.php';
-include $_SERVER['DOCUMENT_ROOT'] . '/podfinder/src/includes/helpers.inc.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/mediashare/src/includes/db.inc.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/mediashare/src/includes/helpers.inc.php';
 
 $restJson = file_get_contents("php://input");
 $_POST = json_decode($restJson, true);
@@ -12,7 +12,7 @@ if (empty($_POST['name']) || empty($_POST['password'])) die();
 
 try
 {
-  $password = md5($_POST['password'] . 'pod');
+  $password = md5($_POST['password'] . 'ms');
   $name = $_POST['name'];
 
   $sql = 'SELECT COUNT(*) FROM user
@@ -25,7 +25,7 @@ try
 catch (PDOException $e)
 {
   $error = 'Error searching for user.';
-  include $_SERVER['DOCUMENT_ROOT'] . '/podfinder/src/includes/error.html.php';
+  include $_SERVER['DOCUMENT_ROOT'] . '/mediashare/src/includes/error.html.php';
   exit();
 }
 

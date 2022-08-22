@@ -4,7 +4,7 @@ import { Container, Button, Col, Row } from "react-bootstrap";
 import Home from "./Home";
 import Login from "./Login";
 
-const PATH = "http://localhost/podfinder/src/user-apis/newuser.php";
+const PATH = "http://localhost/mediashare/src/user-apis/newuser.php";
 
 function SignUp() {
 
@@ -71,7 +71,7 @@ function SignUp() {
           </Row>
           <Row fluid="true" id='bigrow'>
             <Col xs={3} id='yourstuff'>
-              <p>DEFAULT PODCASTS</p>
+              <p>TOP PUBLIC GROUPS</p>
             </Col>
             <Col xs={6}>
               <h3>DEFAULT HOME PAGE</h3>
@@ -89,7 +89,7 @@ function SignUp() {
                   value={inputs.email || ""} onChange={handleChange} />
                   <br />
                   <label>Password</label>
-                  <input type="text" id="password" name="password" placeholder="Enter your password"
+                  <input type="password" id="password" name="password" placeholder="Enter your password"
                   value={inputs.password || ""} onChange={handleChange} />
                   <br/>
                   <input type="submit" value="Create"
@@ -114,7 +114,7 @@ function SignUp() {
         </Row>
         <Row fluid="true" id='bigrow'>
           <Col xs={3} id='yourstuff'>
-            <p>DEFAULT PODCASTS</p>
+            <p>TOP PUBLIC GROUPS</p>
           </Col>
           <Col xs={6}>
             <h3>DEFAULT HOME PAGE</h3>
@@ -131,7 +131,7 @@ function SignUp() {
                   value={inputs.email || ""} onChange={handleChange} />
                   <br />
                   <label>Password</label>
-                  <input type="text" id="password" name="password" placeholder="Enter your password"
+                  <input type="password" id="password" name="password" placeholder="Enter your password"
                   value={inputs.password || ""} onChange={handleChange} />
                   <br/>
                   <input type="submit" value="Create"

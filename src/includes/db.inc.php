@@ -1,7 +1,7 @@
 <?php
 try {
 
-  $pdo = new PDO('mysql:host=localhost;dbname=podsite', 'root', '9Chester!');
+  $pdo = new PDO('mysql:host=localhost;dbname=mshare', 'root', '9Chester!');
   $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   $pdo->exec('SET NAMES "utf8"');
 

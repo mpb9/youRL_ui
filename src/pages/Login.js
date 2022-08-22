@@ -4,7 +4,7 @@ import { Container, Button, Col, Row } from "react-bootstrap";
 import Home from "./Home"
 import SignUp from "./SignUp";
 
-const PATH = "http://localhost/podfinder/src/user-apis/userlogin.php";
+const PATH = "http://localhost/mediashare/src/user-apis/userlogin.php";
 
 function Login() {
 
@@ -72,7 +72,7 @@ function Login() {
           </Row>
           <Row fluid="true" id='bigrow'>
             <Col xs={3} id='yourstuff'>
-              <p>YOUR PODCASTS</p>
+              <p>TOP PUBLIC GROUPS</p>
             </Col>
             <Col xs={6}>
               <h3>HOME PAGE</h3>
@@ -122,7 +122,7 @@ function Login() {
           </Row>
           <Row fluid="true" id='bigrow'>
             <Col xs={3} id='yourstuff'>
-              <p>DEFAULT PODCASTS</p>
+              <p>TOP PUBLIC GROUPS</p>
             </Col>
             <Col xs={6}>
               <h3>DEFAULT HOME PAGE</h3>
