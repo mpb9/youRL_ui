@@ -9,44 +9,54 @@ const PATH = "http://localhost/mediashare/src/post-apis/newpost.php";
 // post doesnt include: time or tags
 
 function Post({username, preview}) {
-    const [inputs, setInputs] = useState({
-      name: username,
-      title: preview.title,
-      url: preview.url,
-      image: preview.image,
-      description: preview.description,
-      posted: false
+  const [inputs, setInputs] = useState({
+    name: username,
+    title: preview.title,
+    url: preview.url,
+    image: preview.image,
+    description: preview.description,
+    posted: false
+  });
+
+  const handleChange = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setInputs(values => ({...values, [name]: value}))
+  }
+
+  const cancelPost = (event) => {
+    const name = 'posted';
+    const value = true;
+    setInputs(values => ({...values, [name]: value}))
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    axios({
+      method: "post",
+      url: `${PATH}`,
+      headers: { "content-type": "application/json" },
+      data: inputs
+    })
+    .then((result) => {
+      console.log(result.data);
+      const name = 'posted';
+      const value = true;
+      setInputs(values => ({...values, [name]: value}));
+    })
+    .catch((error) => {
+      console.log(error);
     });
+  }
 
-    const handleChange = (event) => {
-      const name = event.target.name;
-      const value = event.target.value;
-      setInputs(values => ({...values, [name]: value}))
-    }
-
-    const handleSubmit = (event) => {
-      event.preventDefault();
-      console.log(inputs);
-      axios({
-        method: "post",
-        url: `${PATH}`,
-        headers: { "content-type": "application/json" },
-        data: inputs
-      })
-      .then((result) => {
-        console.log(result.data);
-        const name = 'posted';
-        const value = true;
-        setInputs(values => ({...values, [name]: value}));
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    }
-
-    
-    if(!inputs.posted){
-      return (
+  
+  if(!inputs.posted){
+    return (
+    <Row  id='medrow'>
+    <Col xs={4} id='yourstuff'>
+      <input style={{marginTop: '7px'}} type="submit" value="Cancel Post" onClick={cancelPost} />
+    </Col>
+    <Col xs={8} id='middlecol'>
       <Container fluid id='explorecontainer'>
         <h3>Your Post</h3>
         <form onSubmit={handleSubmit}>
@@ -72,13 +82,15 @@ function Post({username, preview}) {
         </Row>
         </form>
       </Container>
-      );
-    
-    } else {
-      return (
-        <Explore user={inputs.name} />
-      );
-    }
+    </Col>
+    </Row>
+    );
+  
+  } else {
+    return (
+      <Explore user={inputs.name} isPosting={false}/>
+    );
+  }
 }
 
 export default Post;

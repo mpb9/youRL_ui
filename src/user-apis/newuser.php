@@ -55,6 +55,21 @@ if ($row[0] > 0){
 
     }
 
+    try {
+      $sql = 'INSERT INTO follows SET
+          follower = :name,
+          following = :name';
+      $s = $pdo->prepare($sql);
+      $s->bindValue(':name', $name);
+      $s->execute();
+  
+    } catch (PDOException $e) {
+    $error = 'Error following yourself.';
+    include $_SERVER['DOCUMENT_ROOT'] . '/mediashare/src/includes/error.html.php';
+    exit();
+
+    }
+
     echo json_encode($_POST['name']);
 
 }

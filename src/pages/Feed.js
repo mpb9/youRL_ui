@@ -14,11 +14,6 @@ function Feed({username}) {
     });
 
     useEffect(() => {
-      getFeed(inputs.name);
-    }, []);
-
-    const getFeed = (user) => {
-      console.log(user);
       axios({
         method: "post",
         url: `${PATH}`,
@@ -33,10 +28,10 @@ function Feed({username}) {
       .catch((error) => {
         console.log(error);
       });
-    }
+    }, []);
     
     return (
-      <section style={{width:'100%', margin: 'auto', padding:'0px'}}>
+      <section style={{width:'98%', margin: 'auto', padding:'0px'}}>
         {inputs.posts.map((post) =>
           <ShowPost key={post.id} {...post} />
         )}  

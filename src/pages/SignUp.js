@@ -6,6 +6,7 @@ import Login from "./Login";
 
 const PATH = "http://localhost/mediashare/src/user-apis/newuser.php";
 
+// NOT GOOD
 function SignUp() {
 
     const [inputs, setInputs] = useState({

@@ -28,26 +28,25 @@ function Home({username}) {
     if(inputs.access){
         return (
         <Container fluid id='bigcontainer'>
-                <Row fluid="true" id='navrow'>
-                    <Col xs={9}>
-                        <p>youRL</p>
-                    </Col>
-                    <Col xs={3} style={{textAlign: 'right'}}>
-                        <Link to="/admin">Admin</Link>
-                    </Col>
-                </Row>
-                <Row fluid="true" id='bigrow'>
-                    <Col xs={3} id='yourstuff'>
-                        <p>YOUR GROUPS</p>
-                    </Col>
-                    <Col xs={6} id='middlecol'>
-                        <Explore user={username} />
-                    </Col>
-                    <Col xs={3} id='profile'>
-                        <Profile user={username}/>
-                        <Button onClick={(event) => LogoutHandler(event)}> Logout </Button>
-                    </Col>
-                </Row>
+            <Row fluid="true" id='navrow'>
+                <Col xs={9}>
+                    <p>youRL</p>
+                </Col>
+                <Col xs={1} style={{textAlign: 'right'}}>
+                    <Link to="/admin">Admin</Link>
+                </Col>
+                <Col xs={2} style={{textAlign: 'right'}}>
+                    <Button id='logoutBut' onClick={(event) => LogoutHandler(event)}> Logout </Button>
+                </Col>
+            </Row>
+            <Row fluid="true" id='bigrow'>
+                <Col xs={9} id='medcol'>
+                    <Explore user={username} isPosting={false} />
+                </Col>
+                <Col xs={3} id='profile'>
+                    <Profile user={username}/>
+                </Col>
+            </Row>
         </Container>
         );
     } else {

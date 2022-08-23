@@ -15,7 +15,7 @@ function ShowPost({poster, title, url, img, caption}) {
         </Col>
         <Col xs={6} style={{ margin: 'auto', paddingTop:'5px'}}>
           <h6>{title}</h6>  
-          <Button id='link' onClick={() => window.open(url)}>View Link</Button>
+          <Button id='link' onClick={() => window.open(url)}>Open Link</Button>
         
         </Col>
       </Row>

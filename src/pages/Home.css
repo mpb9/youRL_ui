@@ -1,17 +1,23 @@
 #profile{
     background-color: #448665;
-    margin: 0px;
+    margin: 0 auto;
+    height: inherit;
+    padding: 0px;
 }
 #nostuff{
     background-color: #448665;
     margin: 0px;
+    height: inherit;
 }
 #yourstuff{
     background-color: #448665;
     margin: 0px;
+    padding:0px;
+    height: inherit;
 }
 #middlecol{
     margin:0px;
+    padding:0px;
     background-color: #699E84;
     height: inherit;
 }
@@ -23,8 +29,8 @@
 }
 #bigrow{
     height: 92vh;
-    width: 100vw;
-    margin: 0px;
+    width: inherit;
+    margin: 0 auto;
     text-align: center;
 }
 #navrow{
@@ -34,17 +40,25 @@
     padding: 5px;
     width: inherit;
 }
+#medrow{
+    margin: 0 auto;
+    height: inherit;
+    padding: 0px;
+}
+#medcol{
+    margin: 0 auto;
+    height: inherit;
+    padding: 0px;
+}
 #explorecontainer{
     background-color: #699E84;
     margin: auto; 
-    padding: 3px;
-    padding-top: 5px;
-    margin-top: 5px;
+    padding: 0px;
     width: 100%;
-    height: 98%;
+    height: 100%;
 }
 #explorerow{
-    height: 85%;
+    height: 94%;
     width: inherit;
     margin: auto;
     padding: 0px;
@@ -55,11 +69,23 @@
 #explorerow::-webkit-scrollbar {
     display: none;
 }
+#switchfeedrow{
+    height: 6%;
+    width: inherit;
+    margin: auto;
+    padding: 0px;
+}
 #submitLinkRow{
     height: max-content;
     width: max-content;
-    margin: auto;
-    background-color: #448665;
-    margin-top: 15px;
     padding-bottom: 0px;
+    margin: 0 auto;
+}
+#logoutBut{
+    background-color: #477a61;
+    border-color: black;
+    color: black;
+    padding: 10px;
+    padding-top: 0px;
+    padding-bottom: 2px;
 }

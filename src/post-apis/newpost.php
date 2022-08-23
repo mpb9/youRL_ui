@@ -35,6 +35,9 @@ $url = $_POST['url'];
 $img = $_POST['image'];
 $caption = $_POST['description'];
 
+date_default_timezone_set("America/New_York");
+$day = date("Y-m-d");
+
 try {
 $sql = 'INSERT INTO media SET
   userid = :userid,
@@ -42,18 +45,37 @@ $sql = 'INSERT INTO media SET
   title = :title,
   url = :url,
   img = :img,
-  caption = :caption';
-$s = $pdo->prepare($sql);
-$s->bindValue(':userid', $userid);
-$s->bindValue(':username', $username);
-$s->bindValue(':title', $title);
-$s->bindValue(':url', $url);
-$s->bindValue(':img', $img);
-$s->bindValue(':caption', $caption);
-$s->execute();
+  caption = :caption,
+  date = :date';
+  $s = $pdo->prepare($sql);
+  $s->bindValue(':userid', $userid);
+  $s->bindValue(':username', $username);
+  $s->bindValue(':title', $title);
+  $s->bindValue(':url', $url);
+  $s->bindValue(':img', $img);
+  $s->bindValue(':caption', $caption);
+  $s->bindValue(':date', $day);
+  $s->execute();
 
 } catch (PDOException $e) {
-$error = 'Error posting.';
+  $error = 'Error posting.';
+  include $_SERVER['DOCUMENT_ROOT'] . '/mediashare/src/includes/error.html.php';
+  exit();
+}
+
+$now = date("Y-m-d H:i:s");
+
+try {
+  $sql = 'UPDATE user 
+  SET lastpost = :lastpost
+  WHERE id = :id';
+  $s = $pdo->prepare($sql);
+  $s->bindValue(':id', $userid);
+  $s->bindValue(':lastpost', $now);
+  $s->execute();
+
+} catch (PDOException $e) {
+$error = 'Error adding post time.';
 include $_SERVER['DOCUMENT_ROOT'] . '/mediashare/src/includes/error.html.php';
 exit();
 

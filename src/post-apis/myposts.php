@@ -18,10 +18,8 @@ $name = $_POST['name'];
 try
 {
   $sql = "SELECT * FROM media
-    JOIN follows
-    ON media.username = follows.following
-    WHERE follows.follower = :username
-    ORDER BY media.id DESC";
+    WHERE username = :username
+    ORDER BY id DESC";
   $s = $pdo->prepare($sql);
   $s->bindValue(':username', $name);
   $s->execute();
@@ -32,7 +30,6 @@ catch (PDOException $e)
   include $_SERVER['DOCUMENT_ROOT'] . '/mediashare/src/includes/error.html.php';
   exit();
 }
-
 $num = 0;
 
 while(($row = $s->fetch(PDO::FETCH_ASSOC)) != false){
@@ -42,20 +39,23 @@ while(($row = $s->fetch(PDO::FETCH_ASSOC)) != false){
     'title' => $row['title'],
     'url' => $row['url'],
     'img' => $row['img'],
-    'caption' => $row['caption']
+    'caption' => $row['caption'],
+    'date' => $row['date']
   );
   $num =1;
 }
+
 
 if($num !== 0) echo json_encode($posts);
 else {
   $posts[] = array(
     'id' => '0',
-    'poster' => 'no_friends_found', 
-    'title' => 'Go follow someone!',
+    'poster' => 'no_youRLs_found', 
+    'title' => 'Go post a youRL!',
     'url' => 'https://www.webfx.com/blog/social-media/social-media-101/',
-    'img' => 'https://simkl.net/fanart/66/6681208bf91de020_0.jpg',
-    'caption' => 'No need to worry, add friends through searching or the popular page!'
+    'img' => 'https://ourculturemag.com/wp-content/uploads/2020/10/Spirited_Away_040.jpg',
+    'caption' => 'No need to worry, just show people something you like!',
+    'date' => date('Y-m-d')
   );
   echo json_encode($posts);
 }

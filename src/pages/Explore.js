@@ -1,16 +1,20 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Container, Row, Col, Button} from 'react-bootstrap';
 import axios from 'axios';
 import Post from './Post';
 import Feed from './Feed';
+import Countdown from '../helpers/Countdown';
 import './Home.css';
 import './Form.css';
 
-function Explore({user}) {
+const PATH = "http://localhost/mediashare/src/user-apis/lastuserpost.php";
+
+function Explore({user, isPosting}) {
   const [inputs, setInputs] = useState({
     name: user,
     link: '',
-    posting: false
+    posting: isPosting,
+    lastPost: 0
   });
 
   const [newPost, setPost] = useState({
@@ -19,6 +23,32 @@ function Explore({user}) {
     image: '',
     description: ''
   });
+
+  useEffect(() => {
+    canUserPost();
+  }, []);
+
+  const canUserPost = () => {
+    axios({
+      method: "post",
+      url: `${PATH}`,
+      headers: { "content-type": "application/json" },
+      data: inputs
+    })
+    .then((result) => {
+      console.log(result.data);
+      if(result.data !== true) {
+        const currTime = new Date().getTime();
+        const tempVal = new Date(result.data).getTime();
+        const name = 'lastPost';
+        const value = 1440 - Math.floor(((currTime - tempVal)/1000)/60);
+        setInputs(values => ({...values, [name]: value}));
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  }
 
   const getLink = (event) => {
     const name = event.target.name;
@@ -62,33 +92,50 @@ function Explore({user}) {
       console.error(error);
     });
   }
+
   
-  if(!inputs.posting){
+  if(!inputs.posting && inputs.lastPost < 5){
+    console.log(inputs.lastPost);
     return (
-    <Container fluid id='explorecontainer'>
+    <Row id='medrow'>
+      <Col xs={4} id='yourstuff'>
         <p style={{padding: '0px', margin:'0px'}}>Hi {user}!</p>
-      <Row id='explorerow'>
-        <Feed username={inputs.name} />
-      </Row>
-      <Row fluid id='submitLinkRow'>
-        <form  action="#" style={{paddingBottom: '0px', height: 'min-content'}}>
-          <h6 style={{paddingTop: '5px'}}>Post:
-            <input
-              type="text"
-              id="smallinput"
-              name="link"
-              placeholder="Enter your link"
-              value={inputs.link || ""}
-              onChange={getLink}
-            />
-          <input style={{marginLeft: '7px'}} type="submit" value="Next" onClick={PostHandler} />
-          </h6>
-        </form>
-      </Row>
-    </Container>
+        <Row id='submitLinkRow'>
+          <form  action="#" style={{padding: '5px', height: 'min-content'}}>
+            <h6 style={{paddingTop: '5px'}}>Post:
+              <input
+                type="text"
+                id="smallinput"
+                name="link"
+                placeholder="Enter your link"
+                size='12'
+                value={inputs.link || ""}
+                onChange={getLink}
+              />
+            </h6>
+            <input style={{marginLeft: '7px'}} type="submit" value="Go" onClick={PostHandler} />
+
+          </form>
+        </Row>
+      </Col>
+      <Col xs={8} id='middlecol'>                    
+        <Container id='explorecontainer'>
+          <Row id='switchfeedrow'>
+          </Row>
+          <Row id='explorerow'>
+            <Feed username={inputs.name} />
+          </Row>
+        </Container>
+      </Col>
+    </Row>
     );
-  } else {
+  } else if (inputs.lastPost>5){
+    console.log(inputs.lastPost);
     return (
+      <Countdown lastTime={inputs.lastPost} username={inputs.name} />
+    );
+  }else if(inputs.posting) {
+    return (      
       <Post username={inputs.name} preview={newPost}/>
     );  
   }
