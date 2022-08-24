@@ -14,6 +14,25 @@ if (empty($_POST['name'])) die();
 
 $name = $_POST['name'];
 
+$incUser = $_POST['filtUser'];
+$incTitle = $_POST['filtTitle'];
+$incCaption = $_POST['filtCaption'];
+$incSource = $_POST['filtSource'];
+$search = $_POST['query'];
+
+$searchLength = str_word_count($search);
+
+// USER IS SEARCHING
+if($searchLength > 0){
+  
+  include 'search.php';
+
+  $posts[] = friend_search_result($name, $search, $incUser, $incTitle, $incSource, $incCaption);
+
+  echo json_encode($posts[0]);
+
+// USER NOT SEARCHING
+} else {
 
 try
 {
@@ -64,4 +83,5 @@ else {
     'viewer' => $name
   );
   echo json_encode($posts);
+}
 }

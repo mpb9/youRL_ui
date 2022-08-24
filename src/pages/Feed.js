@@ -9,7 +9,6 @@ const FRIENDFEED = "http://localhost/mediashare/src/post-apis/feed.php";
 const POPFEED = "http://localhost/mediashare/src/post-apis/popfeed.php";
 
 function Feed({username, friends, incUser, incTitle, incSource, incCaption, search, newSearch}) {
-    console.log(search);
     const [inputs, setInputs] = useState({
       name: username,
       friendFeed: friends,
@@ -24,13 +23,17 @@ function Feed({username, friends, incUser, incTitle, incSource, incCaption, sear
 
     // update search query when user clicks 'search'
     useEffect(() => {
+      setInputs(values => ({...values, filtUser: incUser}));
+      setInputs(values => ({...values, filtTitle: incTitle}));
+      setInputs(values => ({...values, filtSource: incSource}));
+      setInputs(values => ({...values, filtCaption: incCaption}));
       setInputs(values => ({...values, query: search}));
     }, [newSearch]);
     
     // update feed when user clicks 'friends/popular' OR when new search query added to inputs state
     useEffect(() => {
       updateFeed(inputs.query);
-    }, [friends, inputs.query]);
+    }, [friends, inputs.query, inputs.filtUser, inputs.filtCaption, inputs.filtSource, inputs.filtTitle]);
 
     const updateFeed = (updateInfo) =>{
       console.log(updateInfo);

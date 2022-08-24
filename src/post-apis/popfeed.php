@@ -26,9 +26,9 @@ if($searchLength > 0){
   
   include 'search.php';
 
-  $posts[] = search_result();
+  $posts[] = pop_search_result($name, $search, $incUser, $incTitle, $incSource, $incCaption);
 
-  echo json_encode($posts);
+  echo json_encode($posts[0]);
 
 // USER NOT SEARCHING
 } else {

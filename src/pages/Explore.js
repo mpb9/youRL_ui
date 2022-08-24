@@ -16,7 +16,9 @@ function Explore({user, isPosting}) {
     link: '',
     posting: isPosting,
     friendFeed: false,
-    lastPost: 0
+    lastPost: 0,
+    newSearch: 0,
+    lastSearch: ''
   });
 
   const [newPost, setPost] = useState({
@@ -155,6 +157,9 @@ function Explore({user, isPosting}) {
   const getSearch = (event) => {
     event.preventDefault();
     console.log(filter);
+    const numSearch = inputs.newSearch+1;
+    setInputs(values => ({...values, newSearch: numSearch}));
+    setInputs(values => ({...values, lastSearch: filter.query}));
   }
 
   if(!inputs.posting && inputs.lastPost < 5){
@@ -221,7 +226,7 @@ function Explore({user, isPosting}) {
             <Feed username={inputs.name} friends={inputs.friendFeed} 
                 incUser={filter.user} incTitle={filter.title} 
                 incSource={filter.source} incCaption={filter.caption}
-                search={filter.query}/>
+                search={inputs.lastSearch} newSearch={inputs.newSearch}/>
           </Row>
         </Container>
       </Col>
