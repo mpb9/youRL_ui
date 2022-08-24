@@ -11,7 +11,6 @@ const LIKE = "http://localhost/mediashare/src/post-apis/like.php";
 const COMMENT = "http://localhost/mediashare/src/post-apis/comment.php";
 const NEWCOMMENT = "http://localhost/mediashare/src/post-apis/addcomment.php";
 
-
 function ShowPost({id, viewer, poster, title, url, img, likes, comments, caption}) {
   
   const [posterProfile, setPosterProfile] = useState({
@@ -224,7 +223,7 @@ function ShowPost({id, viewer, poster, title, url, img, likes, comments, caption
             {(posterProfile.commentPage).map((coms) =>
               <Col key={coms.id} style={{ margin: '0px', textAlign: 'left'}}>
                   <p id='comments'>
-                    <input type='submit' value={coms.commenter} id='userLink' onClick={getProfile}/>
+                    <input type='submit' value={coms.commenter} id='userLink'/>
                     {coms.comment}
                   </p>
               </Col>

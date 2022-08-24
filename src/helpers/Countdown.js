@@ -16,12 +16,14 @@ function Countdown({lastTime, username}) {
     initialMinute: lastTime,
     initialHour: Math.floor(lastTime/60),
     canPost: false,
-    friendFeed: true
+    friendFeed: false,
+    newSearch: 0,
+    lastSearch: ''
   });
   
   const [filter, setFilters] = useState({
-    friends: true,
-    popular: false,
+    friends: false,
+    popular: true,
     user: true,
     userStr: 'user',
     source: true,
@@ -102,9 +104,13 @@ function Countdown({lastTime, username}) {
   const getSearch = (event) => {
     event.preventDefault();
     console.log(filter);
+    const numSearch = inputs.newSearch+1;
+    setInputs(values => ({...values, newSearch: numSearch}));
+    setInputs(values => ({...values, lastSearch: filter.query}));
   }
 
   if(!inputs.canPost){
+    console.log(inputs.newSearch);
     return (
     <Row id='medrow'>
     <Col xs={4} id='yourstuff'>
@@ -149,7 +155,7 @@ function Countdown({lastTime, username}) {
         { hours === 0 && minutes === 0
             ? null
             : <div>
-                <h3 id='nextyouRLHeader'>Post youRL in: </h3>
+                <h3 id='nextyouRLHeader'>Upload Next youRL in: </h3>
                 <h1>{hours}hr {minutes < 10 ?  `0${minutes}` : minutes}min</h1>
               </div> 
         }
@@ -158,7 +164,10 @@ function Countdown({lastTime, username}) {
     <Col xs={8} id='middlecol'>                    
       <Container id='explorecontainer'>
         <Row id='explorerow'>
-          <Feed username={inputs.name} friends={inputs.friendFeed} filters={filter}/>
+          <Feed username={inputs.name} friends={inputs.friendFeed} 
+              incUser={filter.user} incTitle={filter.title} 
+              incSource={filter.source} incCaption={filter.caption}
+              search={inputs.lastSearch} newSearch={inputs.newSearch}/>
         </Row>
       </Container>
     </Col>

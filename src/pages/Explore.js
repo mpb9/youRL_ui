@@ -15,7 +15,7 @@ function Explore({user, isPosting}) {
     name: user,
     link: '',
     posting: isPosting,
-    friendFeed: true,
+    friendFeed: false,
     lastPost: 0
   });
 
@@ -27,8 +27,8 @@ function Explore({user, isPosting}) {
   });
 
   const [filter, setFilters] = useState({
-    friends: true,
-    popular: false,
+    friends: false,
+    popular: true,
     user: true,
     userStr: 'user',
     source: true,
@@ -149,7 +149,7 @@ function Explore({user, isPosting}) {
 
   const searchHandler = (event) => {
     const value = event.target.value;
-    setFilters(values => ({...values, query: value}))
+    setFilters(values => ({...values, query: value}));
   }
 
   const getSearch = (event) => {
@@ -199,7 +199,7 @@ function Explore({user, isPosting}) {
           </Container>
         </Row>
         <Row id='submitLinkRow'>
-          <h4 id='youRFeedHeader'>Post youRL</h4>
+          <h4 id='youRFeedHeader'>Upload youRL</h4>
           <form  action="#" style={{padding: '5px', height: 'min-content'}}>
             <h6 style={{paddingTop: '20px', paddingBottom: '10px', paddingRight:'5px'}}>
               <input
@@ -218,7 +218,10 @@ function Explore({user, isPosting}) {
       <Col xs={8} id='middlecol'>                    
         <Container id='explorecontainer'>
           <Row id='explorerow'>
-            <Feed username={inputs.name} friends={inputs.friendFeed} filters={filter} />
+            <Feed username={inputs.name} friends={inputs.friendFeed} 
+                incUser={filter.user} incTitle={filter.title} 
+                incSource={filter.source} incCaption={filter.caption}
+                search={filter.query}/>
           </Row>
         </Container>
       </Col>
