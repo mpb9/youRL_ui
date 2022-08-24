@@ -39,7 +39,6 @@ function Post({username, preview}) {
       data: inputs
     })
     .then((result) => {
-      console.log(result.data);
       const name = 'posted';
       const value = true;
       setInputs(values => ({...values, [name]: value}));

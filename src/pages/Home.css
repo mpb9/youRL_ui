@@ -6,12 +6,12 @@
 }
 #nostuff{
     background-color: #448665;
-    margin: 0px;
+    margin: 0 auto;
     height: inherit;
 }
 #yourstuff{
     background-color: #448665;
-    margin: 0px;
+    margin: 0 auto;
     padding:0px;
     height: inherit;
 }
@@ -58,7 +58,7 @@
     height: 100%;
 }
 #explorerow{
-    height: 94%;
+    height: 100%;
     width: inherit;
     margin: auto;
     padding: 0px;
@@ -69,16 +69,10 @@
 #explorerow::-webkit-scrollbar {
     display: none;
 }
-#switchfeedrow{
-    height: 6%;
-    width: inherit;
-    margin: auto;
-    padding: 0px;
-}
 #submitLinkRow{
     height: max-content;
-    width: max-content;
-    padding-bottom: 0px;
+    width: 100%;
+    padding-bottom: 20px;
     margin: 0 auto;
 }
 #logoutBut{
@@ -88,4 +82,93 @@
     padding: 10px;
     padding-top: 0px;
     padding-bottom: 2px;
+}
+#friendsFeedBut{
+  width:max-content;
+  height: min-content;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 5px;
+  padding-left: 5px;
+  border: 1px solid black;
+  border-top: none;
+  border-bottom-left-radius: 10px;
+  color: #dbedd9;
+}
+#popularFeedBut{
+    width:max-content;
+    height: min-content;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 5px;
+    padding-left: 5px;
+    border: 1px solid black;
+    border-left: none;
+    border-top: none;
+    border-bottom-right-radius: 10px;
+    color: #dbedd9;
+}
+#searchInput{
+    width:max-content;
+    height: min-content;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-right: 5px;
+    padding-left: 5px;
+    margin-left: 10px;
+    background-color: #bcd5b8;
+    border: 1px solid black;
+    color: #315c47;
+}
+#searchType{
+    width:max-content;
+    height: min-content;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-right: 5px;
+    padding-left: 5px;
+    background-color: #448665;
+    border: 1px solid black;
+    color: #dbedd9;
+    margin: 3px;
+}
+#youRFeedHeader{
+    margin-bottom:0px;
+    padding-bottom:5px;
+    border-bottom:1px solid black;
+    width:100%;
+    background-color: #464d45;
+    color:#bcd5b8
+}
+
+#nextyouRLHeader{
+    margin-bottom:40px;
+    padding-bottom:5px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    width:100%;
+    background-color: #464d45;
+    color:#bcd5b8
+}
+
+#postBut{
+    background-color: #bcd5b8;
+    border: 2px solid #315c47;
+    color: black;
+    border-radius: 2px;
+    padding: 10px;
+    padding-top: 0px;
+    padding-bottom: 2px;
+}
+#postInput{
+    width:max-content;
+    height: min-content;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 5px;
+    padding-left: 5px;
+    margin-left: 10px;
+    background-color: #bcd5b8;
+    border: 1px solid black;
+    color: #315c47;
 }

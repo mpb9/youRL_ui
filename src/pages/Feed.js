@@ -5,30 +5,50 @@ import axios from 'axios';
 import './Home.css';
 import './Form.css';
 
-const PATH = "http://localhost/mediashare/src/post-apis/feed.php";
+const FRIENDFEED = "http://localhost/mediashare/src/post-apis/feed.php";
+const POPFEED = "http://localhost/mediashare/src/post-apis/popfeed.php";
 
-function Feed({username}) {
+function Feed({username, friends, filters}) {
     const [inputs, setInputs] = useState({
       name: username,
+      friendFeed: friends,
+      filts: filters,
       posts: []
     });
 
     useEffect(() => {
-      axios({
-        method: "post",
-        url: `${PATH}`,
-        headers: { "content-type": "application/json" },
-        data: inputs
-      })
-      .then((result) => {
-        const name = 'posts';
-        const value = result.data;
-        setInputs(values => ({...values, [name]: value}));
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    }, []);
+      if(friends){
+        axios({
+          method: "post",
+          url: `${FRIENDFEED}`,
+          headers: { "content-type": "application/json" },
+          data: inputs
+        })
+        .then((result) => {
+          const name = 'posts';
+          const value = result.data;
+          setInputs(values => ({...values, [name]: value}));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      } else {
+        axios({
+          method: "post",
+          url: `${POPFEED}`,
+          headers: { "content-type": "application/json" },
+          data: inputs
+        })
+        .then((result) => {
+          const name = 'posts';
+          const value = result.data;
+          setInputs(values => ({...values, [name]: value}));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      }
+    }, [friends]);
     
     return (
       <section style={{width:'98%', margin: 'auto', padding:'0px'}}>

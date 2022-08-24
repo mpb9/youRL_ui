@@ -29,13 +29,13 @@ function Home({username}) {
         return (
         <Container fluid id='bigcontainer'>
             <Row fluid="true" id='navrow'>
-                <Col xs={9}>
+                <Col xs={3} style={{margin:'auto', textAlign:'center'}}>
                     <p>youRL</p>
                 </Col>
-                <Col xs={1} style={{textAlign: 'right'}}>
+                <Col xs={6} style={{textAlign: 'right'}}>
                     <Link to="/admin">Admin</Link>
                 </Col>
-                <Col xs={2} style={{textAlign: 'right'}}>
+                <Col xs={3} style={{textAlign: 'right'}}>
                     <Button id='logoutBut' onClick={(event) => LogoutHandler(event)}> Logout </Button>
                 </Col>
             </Row>

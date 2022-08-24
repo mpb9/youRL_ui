@@ -6,6 +6,7 @@ import Feed from './Feed';
 import Countdown from '../helpers/Countdown';
 import './Home.css';
 import './Form.css';
+import '../helpers/Post.css'
 
 const PATH = "http://localhost/mediashare/src/user-apis/lastuserpost.php";
 
@@ -14,6 +15,7 @@ function Explore({user, isPosting}) {
     name: user,
     link: '',
     posting: isPosting,
+    friendFeed: true,
     lastPost: 0
   });
 
@@ -22,6 +24,20 @@ function Explore({user, isPosting}) {
     url: '',
     image: '',
     description: ''
+  });
+
+  const [filter, setFilters] = useState({
+    friends: true,
+    popular: false,
+    user: true,
+    userStr: 'user',
+    source: true,
+    sourceStr: 'source',
+    title: true,
+    titleStr: 'title',
+    caption: true,
+    captionStr: 'caption',
+    query: ''
   });
 
   useEffect(() => {
@@ -36,7 +52,6 @@ function Explore({user, isPosting}) {
       data: inputs
     })
     .then((result) => {
-      console.log(result.data);
       if(result.data !== true) {
         const currTime = new Date().getTime();
         const tempVal = new Date(result.data).getTime();
@@ -86,51 +101,130 @@ function Explore({user, isPosting}) {
         }
       }
     ).then(function (response) {
-      console.log(response.data);
       getPost(response.data);
     }).catch(function (error) {
       console.error(error);
     });
   }
 
-  
+  const showPop = () => {
+    setInputs(values => ({...values, friendFeed: false}));
+    setFilters(values => ({...values, friends: false}));
+    setFilters(values => ({...values, popular: true}));
+  }
+  const showFriend = () => {
+    setInputs(values => ({...values, friendFeed: true}));
+    setFilters(values => ({...values, friends: true}));
+    setFilters(values => ({...values, popular: false}));
+  }
+  const getFilters = (event) => {
+    event.preventDefault();
+    const name = event.target.name;
+    if(name === filter.userStr){
+      if(filter.user === true){
+        setFilters(values => ({...values, [name]: false}));
+      } else {
+        setFilters(values => ({...values, [name]: true}));
+      }
+    } else if(name === filter.sourceStr){
+      if(filter.source === true){
+        setFilters(values => ({...values, [name]: false}));
+      } else {
+        setFilters(values => ({...values, [name]: true}));
+      }
+    } else if(name === filter.titleStr){
+      if(filter.title === true){
+        setFilters(values => ({...values, [name]: false}));
+      } else {
+        setFilters(values => ({...values, [name]: true}));
+      }
+    } else {
+      if(filter.caption === true){
+        setFilters(values => ({...values, [name]: false}));
+      } else {
+        setFilters(values => ({...values, [name]: true}));
+      }
+    }
+  }
+
+  const searchHandler = (event) => {
+    const value = event.target.value;
+    setFilters(values => ({...values, query: value}))
+  }
+
+  const getSearch = (event) => {
+    event.preventDefault();
+    console.log(filter);
+  }
+
   if(!inputs.posting && inputs.lastPost < 5){
-    console.log(inputs.lastPost);
     return (
     <Row id='medrow'>
       <Col xs={4} id='yourstuff'>
-        <p style={{padding: '0px', margin:'0px'}}>Hi {user}!</p>
+        <Row style={{margin:'auto', height:'max-content', paddingBottom:'20px', borderBottom: '1px solid black'}}>
+          <Container style={{margin:'0 auto', height:'min-content', padding:'0px'}}>
+            <h4 id='youRFeedHeader'>youR Feed</h4>
+            <Row style={{margin:'0 auto', paddingBottom:'10px'}}>
+              <h5>
+                <input name='friend' type='submit' value='Friends' id='friendsFeedBut' 
+                  style={{ backgroundColor: filter.friends ? '#315c47' : '#8eb1a0'}} onClick={showFriend}/>
+
+                <input name='popular' type='submit' value='Popular' id='popularFeedBut' 
+                  style={{ backgroundColor: filter.popular ? '#315c47' : '#8eb1a0'}} onClick={showPop}/>
+              </h5>
+              <Container style={{textAlign:'center', paddingLeft:'8px', paddingTop:'10px'}}>
+                <h5>Search Feed:</h5>
+              <form action='#'>
+                <input type='text' placeholder="Search" value={filter.query || ""} 
+                        id='searchInput' onChange={searchHandler}/>
+
+                <h6 style={{marginLeft: '10px', paddingTop:'10px'}}>
+                  Filter Results:
+                  <br/> 
+                  <input type='submit' name='user' value='user' id='searchType'
+                    style={{ backgroundColor: filter.user ? '#315c47' : '#8eb1a0'}} onClick={getFilters}/>
+                  <input type='submit' name='source' value='youRL source' id='searchType'
+                    style={{ backgroundColor: filter.source ? '#315c47' : '#8eb1a0'}} onClick={getFilters}/>
+                  <input type='submit' name='title' value='title' id='searchType' 
+                    style={{ backgroundColor: filter.title ? '#315c47' : '#8eb1a0'}} onClick={getFilters}/>
+                  <input type='submit' name='caption' value='caption' id='searchType'
+                    style={{ backgroundColor: filter.caption ? '#315c47' : '#8eb1a0'}} onClick={getFilters}/>
+                </h6>
+
+                <input style={{marginLeft: '7px'}} type="submit" value="Search" id='postBut' onClick={getSearch} />
+
+              </form>
+              </Container>
+            </Row>
+          </Container>
+        </Row>
         <Row id='submitLinkRow'>
+          <h4 id='youRFeedHeader'>Post youRL</h4>
           <form  action="#" style={{padding: '5px', height: 'min-content'}}>
-            <h6 style={{paddingTop: '5px'}}>Post:
+            <h6 style={{paddingTop: '20px', paddingBottom: '10px', paddingRight:'5px'}}>
               <input
                 type="text"
-                id="smallinput"
+                id="postInput"
                 name="link"
                 placeholder="Enter your link"
-                size='12'
                 value={inputs.link || ""}
                 onChange={getLink}
               />
             </h6>
-            <input style={{marginLeft: '7px'}} type="submit" value="Go" onClick={PostHandler} />
-
+            <input style={{marginLeft: '7px'}} type="submit" value="Next" id='postBut' onClick={PostHandler} />
           </form>
         </Row>
       </Col>
       <Col xs={8} id='middlecol'>                    
         <Container id='explorecontainer'>
-          <Row id='switchfeedrow'>
-          </Row>
           <Row id='explorerow'>
-            <Feed username={inputs.name} />
+            <Feed username={inputs.name} friends={inputs.friendFeed} filters={filter} />
           </Row>
         </Container>
       </Col>
     </Row>
     );
   } else if (inputs.lastPost>5){
-    console.log(inputs.lastPost);
     return (
       <Countdown lastTime={inputs.lastPost} username={inputs.name} />
     );

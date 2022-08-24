@@ -1,3 +1,11 @@
+#profCont{
+  width: 100%;
+  height: fit-content;
+  background-color: #699E84;
+  padding: 5px;
+  border-bottom: 1px solid black;
+}
+
 #editBut{
   background-color: #315c47;
   border-color: black;
@@ -6,4 +14,33 @@
   padding-top: 0px;
   padding-bottom: 2px;
   margin-left: 10px;
+}
+#pubProCaption{
+  background-color: #bcd5b8;
+  margin-left:2px;
+  padding: 3px;
+  font-size: small;
+  text-align: left;
+  border-radius: 3px;
+}
+#pubLink{
+  padding: 7px;
+  padding-top: 0px;
+  padding-bottom: 2px;
+  margin-left: 5px;
+  margin-top: 0px;
+  margin-bottom: 3px;
+  background-color: #448665;
+  border: 1px solid black;
+  color: #dbedd9;
+}
+#pubProPic{
+  max-width: 90px;
+  max-height: 90px;
+  min-width: 0px;
+  min-height: 0px;
+  border: 1px solid #f2e1c0;
+  border-radius: 2px;
+  margin-bottom: 3px;
+  margin-top: 10px;
 }

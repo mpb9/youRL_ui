@@ -33,7 +33,6 @@ function SignUp() {
         data: inputs
         })
         .then((result) => {
-            console.log(result.data);
             const name = 'loggedin';
             const value = result.data;
             setInputs(values => ({...values, [name]: value}))
@@ -54,7 +53,6 @@ function SignUp() {
     }
 
     if(inputs.loggedin === inputs.name && inputs.access === true){
-        console.log(inputs.loggedin);
         return(
             <Home username={inputs.loggedin}/>
         );

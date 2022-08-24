@@ -17,11 +17,11 @@ $name = $_POST['name'];
 
 try
 {
-  $sql = "SELECT * FROM media
+  $sql = "SELECT * FROM media 
     JOIN follows
     ON media.username = follows.following
     WHERE follows.follower = :username
-    ORDER BY media.id DESC";
+    ORDER BY media.mediaid DESC";
   $s = $pdo->prepare($sql);
   $s->bindValue(':username', $name);
   $s->execute();
@@ -37,12 +37,15 @@ $num = 0;
 
 while(($row = $s->fetch(PDO::FETCH_ASSOC)) != false){
   $posts[] = array(
-    'id' => $row['id'],
+    'id' => $row['mediaid'],
     'poster' => $row['username'], 
     'title' => $row['title'],
     'url' => $row['url'],
     'img' => $row['img'],
-    'caption' => $row['caption']
+    'caption' => $row['caption'],
+    'likes' => $row['likes'],
+    'comments' => $row['comments'],
+    'viewer' => $name
   );
   $num =1;
 }
@@ -50,12 +53,15 @@ while(($row = $s->fetch(PDO::FETCH_ASSOC)) != false){
 if($num !== 0) echo json_encode($posts);
 else {
   $posts[] = array(
-    'id' => '0',
+    'id' => 0,
     'poster' => 'no_friends_found', 
     'title' => 'Go follow someone!',
     'url' => 'https://www.webfx.com/blog/social-media/social-media-101/',
     'img' => 'https://simkl.net/fanart/66/6681208bf91de020_0.jpg',
-    'caption' => 'No need to worry, add friends through searching or the popular page!'
+    'caption' => 'No need to worry, add friends through searching or the popular page!',
+    'likes' => 0,
+    'comments' => 0,
+    'viewer' => $name
   );
   echo json_encode($posts);
 }
