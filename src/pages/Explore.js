@@ -156,7 +156,6 @@ function Explore({user, isPosting}) {
 
   const getSearch = (event) => {
     event.preventDefault();
-    console.log(filter);
     const numSearch = inputs.newSearch+1;
     setInputs(values => ({...values, newSearch: numSearch}));
     setInputs(values => ({...values, lastSearch: filter.query}));

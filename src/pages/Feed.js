@@ -36,9 +36,7 @@ function Feed({username, friends, incUser, incTitle, incSource, incCaption, sear
     }, [friends, inputs.query, inputs.filtUser, inputs.filtCaption, inputs.filtSource, inputs.filtTitle]);
 
     const updateFeed = (updateInfo) =>{
-      console.log(updateInfo);
       if(friends){
-        console.log(inputs.query);
         axios({
           method: "post",
           url: `${FRIENDFEED}`,
@@ -54,7 +52,6 @@ function Feed({username, friends, incUser, incTitle, incSource, incCaption, sear
           console.log(error);
         });
       } else {
-        console.log(inputs.query);
 
         axios({
           method: "post",
@@ -63,7 +60,6 @@ function Feed({username, friends, incUser, incTitle, incSource, incCaption, sear
           data: inputs
         })
         .then((result) => {
-          console.log(result.data);
           const name = 'posts';
           const value = result.data;
           setInputs(values => ({...values, [name]: value}));
