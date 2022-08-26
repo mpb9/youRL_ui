@@ -24,6 +24,7 @@ function ShowPost({id, viewer, poster, title, url, img, likes, comments, caption
     likeCount: likes,
     comCount: comments,
     newComment: '',
+    proPic: '',
     data: []
   });
 
@@ -41,6 +42,8 @@ function ShowPost({id, viewer, poster, title, url, img, likes, comments, caption
     .then((result) => {
       setPosterProfile(values => ({...values, data: result.data}));
       setPosterProfile(values => ({...values, show: true}));
+      const temp = "http://localhost/mediashare/src/user-apis/" + result.data.proimg;
+      setPosterProfile(values => ({...values, proPic: temp}));
 
       axios({
         method: "post",
@@ -163,6 +166,7 @@ function ShowPost({id, viewer, poster, title, url, img, likes, comments, caption
   }
   
   if(posterProfile.show){
+    console.log(posterProfile.proPic);
     return(
       <Container id='profCont'>     
         <Row style={{margin: 'auto'}}>
@@ -173,7 +177,7 @@ function ShowPost({id, viewer, poster, title, url, img, likes, comments, caption
             <Row style={{margin: 'auto', height:'fit-content', backgroundColor:'#bcd5b8', borderRadius:'3px'}}>
               <Row style={{margin: 'auto', height:'40%'}}>
                 <Col xs={5} style={{padding: '3px', textAlign: 'left'}}>
-                  <img id='pubProPic' alt="User Image"/>
+                  <img id='pubProPic' src={posterProfile.proPic} alt="User Image"/>
                   <input type='submit' value={posterProfile.follows} id='followBut' onClick={followHandler}/>
                 </Col>
                 <Col xs={7} style={{ padding: '2px', margin: 'auto'}}>
@@ -183,7 +187,7 @@ function ShowPost({id, viewer, poster, title, url, img, likes, comments, caption
               </Row>
               <Row style={{margin: 'auto', height:'60%'}}>
                   <Row style={{ textAlign: 'left', marginBottom:'0px', marginTop:'5px', height:'100%'}}>
-                    <p>bio</p>
+                    <p>{posterProfile.data.bio}</p>
                   </Row>
               </Row>
             </Row>

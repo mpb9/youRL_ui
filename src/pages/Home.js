@@ -30,10 +30,9 @@ function Home({username}) {
         <Container fluid id='bigcontainer'>
             <Row fluid="true" id='navrow'>
                 <Col xs={3} style={{margin:'auto', textAlign:'center'}}>
-                    <p>youRL</p>
                 </Col>
-                <Col xs={6} style={{textAlign: 'right'}}>
-                    <Link to="/admin">Admin</Link>
+                <Col xs={6} style={{textAlign: 'center'}}>
+                    <h2>youRL</h2>
                 </Col>
                 <Col xs={3} style={{textAlign: 'right'}}>
                     <Button id='logoutBut' onClick={(event) => LogoutHandler(event)}> Logout </Button>

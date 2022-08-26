@@ -60,7 +60,7 @@ while(($row = $s->fetch(PDO::FETCH_ASSOC)) != false){
     'poster' => $row['username'], 
     'title' => $row['title'],
     'url' => $row['url'],
-    'img' => $row['img'],
+    'img' => $row['mediaimg'],
     'caption' => $row['caption'],
     'likes' => $row['likes'],
     'comments' => $row['comments'],

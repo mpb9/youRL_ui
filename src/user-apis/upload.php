@@ -44,6 +44,8 @@ if($_FILES['file']) {
                     "base64" => $base64URL,
                     "total" => $count
                 ));
+
+                echo json_encode($upload_name);
             }else {
                 
                 
@@ -66,5 +68,5 @@ if($_FILES['file']) {
     );
 }
 
-echo json_encode($random_name);
+
 ?>

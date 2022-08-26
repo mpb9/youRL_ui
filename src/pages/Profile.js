@@ -7,7 +7,7 @@ import MyPosts from "../helpers/MyPosts";
 const PATH = "http://localhost/mediashare/src/user-apis/userinfo.php";
 const NEWPROPIC = "http://localhost/mediashare/src/user-apis/upload.php";
 const CHANGEIMG = "http://localhost/mediashare/src/user-apis/newprofileimg.php";
-
+const CHANGEINFO = "http://localhost/mediashare/src/user-apis/newprofileinfo.php";
 
 function Profile({user}) {
   const [inputs, setInputs] = useState({
@@ -16,12 +16,14 @@ function Profile({user}) {
     imgpath: ''
   });
   const [info, setInfo] = useState({
+    name: user,
     email: '',
     fullname: '',
     bio: '',
     img: ''
   });
   const [img, setImg] = useState({});
+
 
   useEffect(() => {
     axios({
@@ -31,8 +33,11 @@ function Profile({user}) {
       data: inputs
     })
     .then((result) => {
+      const imgAlter = "http://localhost/mediashare/src/user-apis/" + result.data.img
       setInfo(values => ({...values, ['email']: result.data.email}));
       setInfo(values => ({...values, ['fullname']: result.data.fullname}));
+      setInfo(values => ({...values, ['bio']: result.data.bio}));
+      setInfo(values => ({...values, ['img']: imgAlter}));
     })
     .catch((error) => {
       console.log(error);
@@ -40,19 +45,19 @@ function Profile({user}) {
   }, []);
 
   useEffect(() => {
-      axios({
-        method: "post",
-        url: `${CHANGEIMG}`,
-        headers: { "content-type": "application/json" },
-        data: inputs
-      })
-      .then((result) => {
-        console.log(result.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    setInfo(values => ({...values, img: inputs.imgpath}));
+    axios({
+      method: "post",
+      url: `${CHANGEIMG}`,
+      headers: { "content-type": "application/json" },
+      data: inputs
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+    console.log(inputs.imgpath);
+    const imgAlter = "http://localhost/mediashare/src/user-apis/" + inputs.imgpath;
+
+    setInfo(values => ({...values, img: imgAlter}));
   }, [inputs.imgpath]);
 
   const EditHandler = (event)  => {   
@@ -77,7 +82,6 @@ function Profile({user}) {
       data: imgData
     })
     .then((result) => {
-      console.log(result.data);
       setInputs(values => ({...values, imgpath: result.data}));
     })
     .catch((error) => {
@@ -100,6 +104,26 @@ function Profile({user}) {
   const DoneEditingHandler = (event)  => {   
     event.preventDefault();
     console.log(info);
+
+    axios({
+      method: "post",
+      url: `${CHANGEINFO}`,
+      headers: { "content-type": "application/json" },
+      data: info
+    })
+    .then((result) => {
+      console.log(result.data);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+
+    const name2 = 'edit';
+    const value2 = false;
+    setInputs(values => ({...values, [name2]: value2}))
+  }
+  const CancelEditingHandler = (event)  => {   
+    event.preventDefault();
     const name2 = 'edit';
     const value2 = false;
     setInputs(values => ({...values, [name2]: value2}))
@@ -110,19 +134,23 @@ function Profile({user}) {
   if(!inputs.edit){
     return(
       <Container style={{ padding:'5px', width:'100%', height:'100%', margin: 'auto'}}>
-        <Row style={{padding:'0px', height:'35%', width:'100%', margin: 'auto'}}>
-          <h4>{user} 
+        <Row style={{padding:'3px', height:'35%', width:'100%', margin: 'auto', textAlign: 'center'}}>
+          <Container id='profBio' >
+            <img id='profImg' src={info.img} alt="No Profile Picture"/>
+            <h5 style={{ padding:'0px'}}>{info.fullname}</h5>
+
+            {info.bio}
+
+            <h5 style={{margin:'auto', paddingTop: '10px'}}>
             <Button id='editBut' onClick={(event) => EditHandler(event)}> Edit </Button>
-          </h4>
-          <p style={{fontSize: '12px'}}>{info.email}</p>
-          <h6 style={{fontSize: '12px'}}>{info.fullname}</h6>
-          <h6 style={{fontSize: '12px'}}>{info.bio}</h6>
+            </h5>
+          </Container>
+          
         </Row>
         <MyPosts username={inputs.name}/>
       </Container>
     );
   } else {
-    // Use form from SignUp or something to edit everything
     return(
       <Container style={{ padding:'5px', width:'100%', margin: 'auto'}}>
           <h4>Edit: {user}</h4>
@@ -139,7 +167,7 @@ function Profile({user}) {
             <h6>Bio</h6>     
             <textarea id='editBioInput' type='text' placeholder="bio" value={info.bio || ""} onChange={bioHandler} /> 
             
-            <Button id='nvmBut' onClick={(event) => DoneEditingHandler(event)}> Cancel </Button>
+            <Button id='nvmBut' onClick={(event) => CancelEditingHandler(event)}> Cancel </Button>
             <Button id='editBut' onClick={(event) => DoneEditingHandler(event)}> Done </Button>
           </form>
       </Container>

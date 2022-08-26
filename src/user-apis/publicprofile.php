@@ -40,8 +40,10 @@ while(($row = $s->fetch(PDO::FETCH_ASSOC)) != false){
     'date' => $row['date'],
     'title' => $row['title'],
     'url' => $row['url'],
-    'img' => $row['img'],
-    'caption' => $row['caption']
+    'img' => $row['mediaimg'],
+    'caption' => $row['caption'],
+    'bio' => $row['bio'],
+    'proimg' => $row['img']
   );
   $num = 1;
 }
@@ -68,7 +70,9 @@ else {
       'title' => 'No youRLs yet..',
       'url' => 'https://thelife.com/19-ways-to-encourage-others',
       'img' => 'https://image.freepik.com/free-vector/funny-detective-character-illustration_152098-230.jpg',
-      'caption' => 'This user has yet to share anything!'
+      'caption' => 'This user has yet to share anything!',
+      'bio' => '',
+      'proimg' => ''
     );
   }
 

@@ -31,7 +31,9 @@ catch (PDOException $e)
 while(($row = $s->fetch(PDO::FETCH_ASSOC)) != false){
   $info[] = array(
     'email' => $row['email'],
-    'fullname' => $row['fullname']
+    'fullname' => $row['fullname'],
+    'bio' => $row['bio'],
+    'img' => $row['img']
   );
 }
 

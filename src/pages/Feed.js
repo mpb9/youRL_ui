@@ -69,7 +69,7 @@ function Feed({username, friends, incUser, incTitle, incSource, incCaption, sear
         });
       }
     }
-
+    console.log(inputs.posts);
     return (
       <section style={{width:'98%', margin: 'auto', padding:'0px'}}>
         {inputs.posts.map((post) =>
