@@ -1,13 +1,13 @@
 #profCont{
   width: 100%;
   height: fit-content;
-  background-color: #699E84;
+  background-color: #ffffff;
   padding: 5px;
-  border-bottom: 1px solid black;
+  border-bottom: 2px solid black;
 }
 #profImg{
-  max-width: 50%;
-  max-height: max-content;
+  max-width: 40%;
+  max-height: 40%;
   min-width: 0px;
   min-height: 0px;
   border: 1px solid #f2e1c0;
@@ -16,36 +16,45 @@
   margin: 0 auto;
 }
 #profBio{
-  background-color: #bcd5b8;
   font-size: smaller;
   border-radius: 3px;
+  width: 95%;
   max-height: 100%;
   min-height: min-content;
   padding: 2px;
- 
 }
 
 #editBut{
-  background-color: #315c47;
+  background-color: #2297ff;
   border-color: black;
-  color: #dbedd9;
+  color: black;
+  padding-left: 6px;
+  padding-right: 6px;
+  padding-top: 0px;
+  padding-bottom: 1px;
+  margin-left: 0px;
+}
+#doneBut{
+  background-color: #2297ff;
+  border-color: black;
+  color: black;
   padding: 8px;
   padding-top: 0px;
   padding-bottom: 2px;
   margin-left: 10px;
 }
 #nvmBut{
-  background-color: #699E84;
+  background-color: #ff8903;
   border-color: black;
-  color: #dbedd9;
+  color: black;
   padding: 8px;
   padding-top: 0px;
   padding-bottom: 2px;
   margin-left: 10px;
 }
 #pubProCaption{
-  background-color: #bcd5b8;
-  margin-left:2px;
+  background-color: #ffffff;
+  margin-left:5px;
   padding: 3px;
   font-size: small;
   text-align: left;
@@ -58,9 +67,9 @@
   margin-left: 5px;
   margin-top: 0px;
   margin-bottom: 3px;
-  background-color: #448665;
+  background-color: #2297ff;
   border: 1px solid black;
-  color: #dbedd9;
+  color: black;
 }
 #pubProPic{
   max-width: 90px;
@@ -76,8 +85,8 @@
 #editBioInput{
   min-width: 90%; 
   min-height: 50px;
-  background-color: #dfecdc;
-  border: 1px solid #464d45;
+  background-color: #ffffff;
+  border: 1px solid black;
 }
 #newBioBut{
   width:max-content;
@@ -88,10 +97,9 @@
   padding-left: 4px;
   margin-top: 3px;
   margin-left: 3px;
-  background-color: #448665;
+  background-color: #2297ff;
   border: 1px solid black;
   border-radius: 7px;
-  color: #dbedd9;
   font-size: small;
 }
 #editNameInput{
@@ -110,9 +118,9 @@
   font-size: smaller;
 }
 #fileUpload{
-  background-color: #315c47;
+  background-color: #2297ff;
   border: 1px solid black;
-  color: #dbedd9;
+  color: black;
   border-radius: 3px;
   padding: 8px;
   padding-top: 0px;

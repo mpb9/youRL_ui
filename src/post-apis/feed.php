@@ -64,7 +64,8 @@ while(($row = $s->fetch(PDO::FETCH_ASSOC)) != false){
     'caption' => $row['caption'],
     'likes' => $row['likes'],
     'comments' => $row['comments'],
-    'viewer' => $name
+    'viewer' => $name,
+    'date' => $row['date']
   );
   $num =1;
 }
@@ -80,7 +81,8 @@ else {
     'caption' => 'No need to worry, add friends through searching or the popular page!',
     'likes' => 0,
     'comments' => 0,
-    'viewer' => $name
+    'viewer' => $name,
+    'date' => date('Y-m-d')
   );
   echo json_encode($posts);
 }

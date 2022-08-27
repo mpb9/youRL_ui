@@ -63,7 +63,8 @@ if($searchLength > 0){
       'comments' => $row['comments'],
       'viewer' => $name,
       'incUser' => $incUser,
-      'search' => $search
+      'search' => $search,
+      'date' => $row['date']
     );
     $num =1;
   }
@@ -79,7 +80,8 @@ if($searchLength > 0){
       'caption' => 'No need to worry, just adjust your search!',
       'likes' => 0,
       'comments' => 0,
-      'viewer' => $name
+      'viewer' => $name,
+      'date' => date('Y-m-d')
     );
     echo json_encode($posts);
   }

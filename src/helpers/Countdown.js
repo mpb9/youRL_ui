@@ -118,10 +118,10 @@ function Countdown({lastTime, username}) {
           <Row style={{margin:'0 auto', paddingBottom:'10px'}}>
             <h5>
               <input name='friend' type='submit' value='Friends' id='friendsFeedBut' 
-                style={{ backgroundColor: filter.friends ? '#315c47' : '#8eb1a0'}} onClick={showFriend}/>
+                style={{ backgroundColor: filter.friends ? '#ff8903' : '#2297ff'}} onClick={showFriend}/>
 
               <input name='popular' type='submit' value='Popular' id='popularFeedBut' 
-                style={{ backgroundColor: filter.popular ? '#315c47' : '#8eb1a0'}} onClick={showPop}/>
+                style={{ backgroundColor: filter.popular ? '#ff8903' : '#2297ff'}} onClick={showPop}/>
             </h5>
             <Container style={{textAlign:'center', paddingLeft:'8px', paddingTop:'10px'}}>
               <h5>Search Feed:</h5>
@@ -133,13 +133,13 @@ function Countdown({lastTime, username}) {
                   Filter Results:
                   <br/>
                   <input type='submit' name='user' value='user' id='searchType'
-                    style={{ backgroundColor: filter.user ? '#315c47' : '#8eb1a0'}} onClick={getFilters}/>
+                    style={{ backgroundColor: filter.user ? '#ff8903' : '#2297ff'}} onClick={getFilters}/>
                   <input type='submit' name='source' value='youRL source' id='searchType'
-                    style={{ backgroundColor: filter.source ? '#315c47' : '#8eb1a0'}} onClick={getFilters}/>
+                    style={{ backgroundColor: filter.source ? '#ff8903' : '#2297ff'}} onClick={getFilters}/>
                   <input type='submit' name='title' value='title' id='searchType' 
-                  style={{ backgroundColor: filter.title ? '#315c47' : '#8eb1a0'}} onClick={getFilters}/>
+                  style={{ backgroundColor: filter.title ? '#ff8903' : '#2297ff'}} onClick={getFilters}/>
                   <input type='submit' name='caption' value='caption' id='searchType'
-                  style={{ backgroundColor: filter.caption ? '#315c47' : '#8eb1a0'}} onClick={getFilters}/>
+                  style={{ backgroundColor: filter.caption ? '#ff8903' : '#2297ff'}} onClick={getFilters}/>
                 </h6>
 
                 <input style={{marginLeft: '7px'}} type="submit" value="Search" id='postBut' onClick={getSearch} />

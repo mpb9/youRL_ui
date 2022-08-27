@@ -137,10 +137,8 @@ function Profile({user}) {
         <Row style={{padding:'3px', height:'35%', width:'100%', margin: 'auto', textAlign: 'center'}}>
           <Container id='profBio' >
             <img id='profImg' src={info.img} alt="No Profile Picture"/>
-            <h5 style={{ padding:'0px'}}>{info.fullname}</h5>
-
-            {info.bio}
-
+            <h5 style={{ padding:'0px', marginBottom:'0px'}}>{info.fullname}</h5>
+             {info.bio}
             <h5 style={{margin:'auto', paddingTop: '10px'}}>
             <Button id='editBut' onClick={(event) => EditHandler(event)}> Edit </Button>
             </h5>
@@ -168,7 +166,7 @@ function Profile({user}) {
             <textarea id='editBioInput' type='text' placeholder="bio" value={info.bio || ""} onChange={bioHandler} /> 
             
             <Button id='nvmBut' onClick={(event) => CancelEditingHandler(event)}> Cancel </Button>
-            <Button id='editBut' onClick={(event) => DoneEditingHandler(event)}> Done </Button>
+            <Button id='doneBut' onClick={(event) => DoneEditingHandler(event)}> Done </Button>
           </form>
       </Container>
     );

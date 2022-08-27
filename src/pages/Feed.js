@@ -71,7 +71,7 @@ function Feed({username, friends, incUser, incTitle, incSource, incCaption, sear
     }
     console.log(inputs.posts);
     return (
-      <section style={{width:'98%', margin: 'auto', padding:'0px'}}>
+      <section style={{width:'100%', margin: '0 auto', padding:'0px'}}>
         {inputs.posts.map((post) =>
           <ShowPost key={post.id} {...post} />
         )}  

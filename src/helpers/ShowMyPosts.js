@@ -8,7 +8,7 @@ function ShowMyPosts({poster, title, url, img, caption, date}) {
     return (
     <Container id='myPostCont'> 
       <Row id='myDays'>
-        <h6 style={{padding:'0px', marginBottom:'1px', color:'#bcd5b8'}}>{date}</h6>
+        <h6 style={{padding:'0px', marginBottom:'1px', color:'black'}}>{date}</h6>
       </Row>    
       <Row style={{margin: 'auto'}}>
         <Col xs={12} style={{textAlign: 'center', margin: 'auto', paddingTop: '5px'}}>

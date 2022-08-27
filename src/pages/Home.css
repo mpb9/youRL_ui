@@ -1,16 +1,16 @@
 #profile{
-    background-color: #448665;
+    background-color: #ff8903;
     margin: 0 auto;
     height: inherit;
     padding: 0px;
 }
 #nostuff{
-    background-color: #448665;
+    background-color: #ff8903;
     margin: 0 auto;
     height: inherit;
 }
 #yourstuff{
-    background-color: #448665;
+    background-color: #ff8903;
     margin: 0 auto;
     padding:0px;
     height: inherit;
@@ -18,11 +18,11 @@
 #middlecol{
     margin:0px;
     padding:0px;
-    background-color: #699E84;
+    background-color: #090004;
     height: inherit;
 }
 #bigcontainer{
-    background-color: #699E84;
+    background-color: #090004;
     margin: 0px; 
     padding: 0px;
     height: 100vh;
@@ -34,10 +34,11 @@
     text-align: center;
 }
 #navrow{
-    background-color: #315c47;
+    background-color: #ff8903;
     height: 8vh; 
     margin: 0px;
     padding: 5px;
+    border-bottom: 3px solid #090004;
     width: inherit;
 }
 #medrow{
@@ -51,8 +52,10 @@
     padding: 0px;
 }
 #explorecontainer{
-    background-color: #699E84;
-    margin: auto; 
+    background-color: #ffffff;
+    border-left: 3px solid black;
+    border-right: 3px solid black;
+    margin: 0 auto; 
     padding: 0px;
     width: 100%;
     height: 100%;
@@ -60,7 +63,7 @@
 #explorerow{
     height: 100%;
     width: inherit;
-    margin: auto;
+    margin: 0 auto;
     padding: 0px;
     -ms-overflow-style: none; /* for Internet Explorer, Edge */
     scrollbar-width: none; /* for Firefox */
@@ -76,7 +79,7 @@
     margin: 0 auto;
 }
 #logoutBut{
-    background-color: #477a61;
+    background-color: #2297ff;
     border-color: black;
     color: black;
     padding: 10px;
@@ -93,7 +96,7 @@
   border: 1px solid black;
   border-top: none;
   border-bottom-left-radius: 10px;
-  color: #dbedd9;
+  color: black;
 }
 #popularFeedBut{
     width:max-content;
@@ -106,7 +109,7 @@
     border-left: none;
     border-top: none;
     border-bottom-right-radius: 10px;
-    color: #dbedd9;
+    color: black;
 }
 #searchInput{
     width:max-content;
@@ -116,9 +119,9 @@
     padding-right: 5px;
     padding-left: 5px;
     margin-left: 10px;
-    background-color: #bcd5b8;
-    border: 1px solid black;
-    color: #315c47;
+    background-color: #e497ff;
+    border: 2px solid black;
+    color: black;
 }
 #searchType{
     width:max-content;
@@ -127,9 +130,9 @@
     padding-bottom: 2px;
     padding-right: 5px;
     padding-left: 5px;
-    background-color: #448665;
+    background-color: #2297ff;
     border: 1px solid black;
-    color: #dbedd9;
+    color: black;
     margin: 3px;
 }
 #youRFeedHeader{
@@ -137,8 +140,8 @@
     padding-bottom:5px;
     border-bottom:1px solid black;
     width:100%;
-    background-color: #464d45;
-    color:#bcd5b8
+    background-color: #2297ff;
+    color:#090004
 }
 
 #nextyouRLHeader{
@@ -147,13 +150,13 @@
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     width:100%;
-    background-color: #464d45;
-    color:#bcd5b8
+    background-color: #2297ff;
+    color:#090004
 }
 
 #postBut{
-    background-color: #bcd5b8;
-    border: 2px solid #315c47;
+    background-color: #2297ff;
+    border: 2px solid black;
     color: black;
     border-radius: 2px;
     padding: 10px;
@@ -168,7 +171,7 @@
     padding-right: 5px;
     padding-left: 5px;
     margin-left: 10px;
-    background-color: #bcd5b8;
-    border: 1px solid black;
-    color: #315c47;
+    background-color: #e497ff;
+    border: 2px solid black;
+    color: black;
 }

@@ -3,6 +3,7 @@ import {Container, Row, Col, Button, NavLink} from 'react-bootstrap';
 import axios from 'axios';
 import './Post.css';
 import '../pages/Profile.css'
+import { editableInputTypes } from '@testing-library/user-event/dist/utils';
 
 const PATH = "http://localhost/mediashare/src/user-apis/publicprofile.php";
 const FOLLOW = "http://localhost/mediashare/src/user-apis/follows.php";
@@ -11,7 +12,7 @@ const LIKE = "http://localhost/mediashare/src/post-apis/like.php";
 const COMMENT = "http://localhost/mediashare/src/post-apis/comment.php";
 const NEWCOMMENT = "http://localhost/mediashare/src/post-apis/addcomment.php";
 
-function ShowPost({id, viewer, poster, title, url, img, likes, comments, caption}) {
+function ShowPost({id, viewer, poster, title, url, img, likes, comments, caption, date}) {
   
   const [posterProfile, setPosterProfile] = useState({
     user: viewer,
@@ -172,9 +173,9 @@ function ShowPost({id, viewer, poster, title, url, img, likes, comments, caption
         <Row style={{margin: 'auto'}}>
           <Col xs={7} style={{padding: '2px',  paddingLeft: '7px', paddingRight: '7px', margin: '0 auto'}}>
             <Row style={{margin: 'auto', textAlign: 'left'}}>
-              <input type='submit' value='Go Back' id='link' onClick={getFeed}/>
+              <input type='submit' value='Go Back' id='openlink' style={{ borderRadius: '4px'}} onClick={getFeed}/>
             </Row>
-            <Row style={{margin: 'auto', height:'fit-content', backgroundColor:'#bcd5b8', borderRadius:'3px'}}>
+            <Row style={{margin: 'auto', height:'fit-content', backgroundColor:'#e497ff', borderRadius:'3px'}}>
               <Row style={{margin: 'auto', height:'40%'}}>
                 <Col xs={5} style={{padding: '3px', textAlign: 'left'}}>
                   <img id='pubProPic' src={posterProfile.proPic} alt="User Image"/>
@@ -207,11 +208,14 @@ function ShowPost({id, viewer, poster, title, url, img, likes, comments, caption
   } else if(posterProfile.showComments){
     return(
       <Container id='postCont'>     
+         <Row id='days'>
+          <h6 style={{padding:'0px', marginBottom:'1px', color:'black', fontWeight:'bold'}}>{date}</h6>
+        </Row>   
         <Row style={{margin: 'auto'}}>
           <Col xs={5} style={{textAlign: 'center', paddingTop: '5px'}}>
             <img id='postImg' src={img} alt="Couldn't Generate"/>
             <h5 style={{paddingTop:'5px'}}>{title}</h5>  
-            <Button id='link' onClick={() => window.open(url)}>Open Link</Button>
+            <Button id='openlink' onClick={() => window.open(url)}>Open Link</Button>
           </Col>
           <Col xs={7} style={{ margin: 'auto', textAlign: 'left', paddingTop:'5px'}}>
             <p id='caption'>
@@ -225,7 +229,7 @@ function ShowPost({id, viewer, poster, title, url, img, likes, comments, caption
         <Row style={{margin: '0 auto', paddingTop: '2px'}}>
           <section style={{width:'100%', margin: '0 auto', padding:'0px'}}>
             {(posterProfile.commentPage).map((coms) =>
-              <Col key={coms.id} style={{ margin: '0px', textAlign: 'left'}}>
+              <Col key={coms.id} style={{ margin: '5px', textAlign: 'left'}}>
                   <p id='comments'>
                     <input type='submit' value={coms.commenter} id='userLink'/>
                     {coms.comment}
@@ -246,11 +250,14 @@ function ShowPost({id, viewer, poster, title, url, img, likes, comments, caption
   } else {
     return (
     <Container id='postCont'>     
+      <Row id='days'>
+          <h6 style={{padding:'0px', marginBottom:'1px', color:'black', fontWeight:'bold'}}>{date}</h6>
+        </Row>  
       <Row style={{margin: 'auto'}}>
         <Col xs={5} style={{textAlign: 'center', paddingTop: '5px'}}>
           <img id='postImg' src={img} alt="Couldn't Generate"/>
           <h5 style={{paddingTop:'5px'}}>{title}</h5> 
-          <Button id='link' onClick={() => window.open(url)}>Open Link</Button> 
+          <Button id='openlink' onClick={() => window.open(url)}>Open Link</Button> 
         </Col>
         <Col xs={7} style={{ margin: 'auto', textAlign: 'left', paddingTop:'5px'}}>
           <p id='caption'>

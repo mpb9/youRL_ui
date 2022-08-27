@@ -36,7 +36,7 @@ function MyPosts({username}) {
     
     return (
       <Container style={{width: 'inherit', margin: 'auto', padding: '7px', height: '65%'}}>
-        <h6 style={{backgroundColor:'#464d45', color:'#bcd5b8', width: 'inherit', marginBottom: '0px', paddingBottom: '2px'}}>{inputs.name}RLs</h6>
+        <h6 style={{backgroundColor:'#2297ff', border:'2px solid black', color:'black', width: 'inherit', marginBottom: '0px', paddingBottom: '2px'}}>{inputs.name}RLs</h6>
         <Row id='mypostrow'>
           <section style={{width:'100%', margin: 'auto', padding:'0px'}}>
             {inputs.posts.map((post) =>
