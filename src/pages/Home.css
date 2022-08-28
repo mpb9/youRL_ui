@@ -93,7 +93,7 @@
   padding-bottom: 5px;
   padding-right: 5px;
   padding-left: 5px;
-  border: 1px solid black;
+  border: 2px solid black;
   border-top: none;
   border-bottom-left-radius: 10px;
   color: black;
@@ -105,14 +105,14 @@
     padding-bottom: 5px;
     padding-right: 5px;
     padding-left: 5px;
-    border: 1px solid black;
+    border: 2px solid black;
     border-left: none;
     border-top: none;
     border-bottom-right-radius: 10px;
     color: black;
 }
 #searchInput{
-    width:max-content;
+    width: 75%;
     height: min-content;
     padding-top: 2px;
     padding-bottom: 2px;
@@ -138,10 +138,10 @@
 #youRFeedHeader{
     margin-bottom:0px;
     padding-bottom:5px;
-    border-bottom:1px solid black;
+    border-bottom:2px solid black;
     width:100%;
     background-color: #2297ff;
-    color:#090004
+    color:#090004;
 }
 
 #nextyouRLHeader{
@@ -163,6 +163,15 @@
     padding-top: 0px;
     padding-bottom: 2px;
 }
+#switchBut{
+    background-color: #e497ff;
+    border: 2px solid black;
+    color: black;
+    border-radius: 2px;
+    padding: 10px;
+    padding-top: 0px;
+    padding-bottom: 2px;
+}
 #postInput{
     width:max-content;
     height: min-content;
@@ -174,4 +183,15 @@
     background-color: #e497ff;
     border: 2px solid black;
     color: black;
+}
+#newUserInput{
+    width: 55%;
+    height: min-content;
+    padding-left: 5px;
+    margin-left: 5px;
+    margin-top: 10px;
+    background-color: #e497ff;
+    border: 2px solid black;
+    color: black;
+    
 }

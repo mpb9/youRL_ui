@@ -22,5 +22,12 @@
 }
 #submitBut{
   width: max-content;
-
+  background-color: #2297ff;
+  border: 1px solid black;
+  border-radius: 4px;
+  font-size: large;
+  color: black;
+  padding: 10px;
+  padding-top: 0px;
+  padding-bottom: 2px;
 }

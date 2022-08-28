@@ -53,7 +53,7 @@ function Post({username, preview}) {
     return (
     <Row  id='medrow'>
     <Col xs={4} id='yourstuff'>
-      <input style={{marginTop: '7px'}} type="submit" value="Cancel Post" onClick={cancelPost} />
+      <input style={{marginTop: '7px'}} id="submitBut" type="submit" value="Cancel Post" onClick={cancelPost} />
     </Col>
     <Col xs={8} id='middlecol'>
       <Container fluid id='explorecontainer'>

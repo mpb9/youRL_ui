@@ -7,14 +7,10 @@ import ShowPost from './ShowPost';
 import './Post.css';
 import '../pages/Home.css';
 
-function Countdown({lastTime, username}) {
-  const [minutes, setminutes ] = useState(Math.floor(lastTime % 60));
-  const [hours, sethours ] =  useState(Math.floor(lastTime/60));
+function NotLoggedIn() {
 
   const [inputs, setInputs] = useState({
-    name: username,
-    initialMinute: lastTime,
-    initialHour: Math.floor(lastTime/60),
+    name: 'anonymous',
     canPost: false,
     friendFeed: false,
     newSearch: 0,
@@ -35,39 +31,6 @@ function Countdown({lastTime, username}) {
     query: ''
   });
   
-
-  useEffect(()=>{
-    let myInterval = setInterval(() => {
-      if (minutes > 0) {
-        setminutes(minutes - 1);
-      }
-      if (minutes === 0) {
-        if (hours === 0) {
-          clearInterval(myInterval)
-          const name = 'canPost';
-          const value = true;
-          setInputs(values => ({...values, [name]: value}));
-        } else {
-          sethours(hours - 1);
-          setminutes(59);
-        }
-      } 
-    }, 60000)
-      return ()=> {
-        clearInterval(myInterval);
-      };
-  });
-
-  const showPop = () => {
-    setInputs(values => ({...values, friendFeed: false}));
-    setFilters(values => ({...values, friends: false}));
-    setFilters(values => ({...values, popular: true}));
-  }
-  const showFriend = () => {
-    setInputs(values => ({...values, friendFeed: true}));
-    setFilters(values => ({...values, friends: true}));
-    setFilters(values => ({...values, popular: false}));
-  }
   const getFilters = (event) => {
     event.preventDefault();
     const name = event.target.name;
@@ -108,21 +71,14 @@ function Countdown({lastTime, username}) {
     setInputs(values => ({...values, lastSearch: filter.query}));
   }
 
-  if(!inputs.canPost){
-    return (
+  return (
     <Row id='medrow'>
     <Col xs={4} id='yourstuff'>
       <Row style={{margin:'auto', height:'max-content', paddingBottom:'20px', borderBottom: '2px solid black'}}>
         <Container style={{margin:'0 auto', height:'min-content', padding:'0px'}}>
           <h4 id='youRFeedHeader'>youR Feed</h4>
           <Row style={{margin:'0 auto', paddingBottom:'10px'}}>
-            <h5>
-              <input name='friend' type='submit' value='Friends' id='friendsFeedBut' 
-                style={{ backgroundColor: filter.friends ? '#ff8903' : '#2297ff'}} onClick={showFriend}/>
-
-              <input name='popular' type='submit' value='Popular' id='popularFeedBut' 
-                style={{ backgroundColor: filter.popular ? '#ff8903' : '#2297ff'}} onClick={showPop}/>
-            </h5>
+            
             <Container style={{textAlign:'center', paddingLeft:'8px', paddingTop:'10px'}}>
               <h5>Search Feed:</h5>
               <form action='#'>
@@ -149,14 +105,24 @@ function Countdown({lastTime, username}) {
           </Row>
         </Container>
       </Row>
-      <Row style={{margin:'0 auto', height:'min-content', paddingTop:'0px'}}>
-        { hours === 0 && minutes === 0
-            ? null
-            : <div>
-                <h3 id='nextyouRLHeader'>Upload Next youRL in: </h3>
-                <h1>{hours}hr {minutes < 10 ?  `0${minutes}` : minutes}min</h1>
-              </div> 
-        }
+      <Row style={{margin:'auto', height:'max-content'}}>
+        <Container style={{margin:'0 auto', height:'min-content', padding:'0px'}}>
+          <h4 id='youRFeedHeader'>About</h4>
+          <Row style={{margin:'0 auto', paddingBottom:'10px'}}>
+            
+            <Container style={{textAlign:'left', paddingLeft:'20px', paddingRight: '20px', paddingTop:'10px'}}>
+              <h6 style={{margin:'0 auto'}}>Media Sharing Platform</h6>
+              <li style={{paddingLeft: '10px'}}>Share links with others </li> 
+              <li style={{paddingLeft: '10px'}}>Find new articles and content </li> 
+              <h6 style={{margin:'0 auto'}}>Daily Posting</h6>
+              <li style={{paddingLeft: '10px'}}>Limits sharing to once per day</li> 
+              <li style={{paddingLeft: '10px'}}>Allows you to track your top daily Internet content</li> 
+              <h6 style={{margin:'0 auto'}}>Connect with Communities</h6>
+              <li style={{paddingLeft: '10px'}}>Personalized "Friends" feed</li>
+              <li style={{paddingLeft: '10px'}}>Search for users, sources, and topics</li> 
+            </Container>
+          </Row>
+        </Container>
       </Row>
     </Col>
     <Col xs={8} id='middlecol'>                    
@@ -170,13 +136,9 @@ function Countdown({lastTime, username}) {
       </Container>
     </Col>
     </Row>
-    );
+  );
   
-  } else {
-    return (
-      <Explore user={inputs.name} isPosting={false}/>
-    );
-  }
+  
 }
 
-export default Countdown;
+export default NotLoggedIn;

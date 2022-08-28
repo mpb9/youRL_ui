@@ -165,7 +165,7 @@ function Explore({user, isPosting}) {
     return (
     <Row id='medrow'>
       <Col xs={4} id='yourstuff'>
-        <Row style={{margin:'auto', height:'max-content', paddingBottom:'20px', borderBottom: '1px solid black'}}>
+        <Row style={{margin:'auto', height:'max-content', paddingBottom:'20px', borderBottom: '2px solid black'}}>
           <Container style={{margin:'0 auto', height:'min-content', padding:'0px'}}>
             <h4 id='youRFeedHeader'>youR Feed</h4>
             <Row style={{margin:'0 auto', paddingBottom:'10px'}}>
@@ -183,7 +183,7 @@ function Explore({user, isPosting}) {
                         id='searchInput' onChange={searchHandler}/>
 
                 <h6 style={{marginLeft: '10px', paddingTop:'10px'}}>
-                  Filter Results:
+                  Included Results:
                   <br/> 
                   <input type='submit' name='user' value='user' id='searchType'
                     style={{ backgroundColor: filter.user ? '#ff8903' : '#2297ff'}} onClick={getFilters}/>

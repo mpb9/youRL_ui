@@ -3,6 +3,7 @@ import axios from "axios";
 import { Container, Button, Col, Row } from "react-bootstrap";
 import Home from "./Home"
 import SignUp from "./SignUp";
+import NotLoggedIn from "../helpers/NotLoggedIn";
 
 const PATH = "http://localhost/mediashare/src/user-apis/userlogin.php";
 
@@ -66,16 +67,17 @@ function Login() {
       return(
         <Container fluid id='bigcontainer'>
           <Row fluid="true" id='navrow'>
-            <Col>
-              <p>Make this a NAV BAR</p>
+            <Col xs={3} style={{margin:'auto', textAlign:'center'}}>
+            </Col>
+            <Col xs={6} style={{textAlign: 'center'}}>
+                <h2>youRL</h2>
+            </Col>
+            <Col xs={3} style={{textAlign: 'right'}}>
             </Col>
           </Row>
           <Row fluid="true" id='bigrow'>
-            <Col xs={3} id='yourstuff'>
-              <p>TOP PUBLIC GROUPS</p>
-            </Col>
-            <Col xs={6}>
-              <h3>HOME PAGE</h3>
+            <Col xs={9} id='medcol'>
+              <NotLoggedIn />
             </Col>
             <Col xs={3} id='profile'>
               <h3>Log In</h3>
@@ -84,7 +86,7 @@ function Login() {
                 <label>Username</label>
                 <input
                   type="text"
-                  id="name"
+                  id="newUserInput"
                   name="name"
                   placeholder="Enter your name"
                   value={inputs.name || ""}
@@ -93,8 +95,8 @@ function Login() {
                 <br />
                 <label>Password</label>
                 <input
-                  type="text"
-                  id="password"
+                  type="password"
+                  id="newUserInput"
                   name="password"
                   placeholder="Enter your password"
                   value={inputs.password || ""}
@@ -102,12 +104,12 @@ function Login() {
                 ></input>
                 <br/>
                 <br/>
-                <input type="submit" value="Log In" onClick={LoginHandler}
+                <input type="submit" id="postBut" value="Log In" onClick={LoginHandler}
                 />
               </form> 
               <br/>
               <h6>Don't have an account?</h6>
-              <Button onClick={(event) => SignUpHandler(event)}> Signup </Button>
+              <Button id="switchBut" onClick={(event) => SignUpHandler(event)}> Signup </Button>
             </Col>      
           </Row>     
         </Container>
@@ -116,16 +118,17 @@ function Login() {
       return(
         <Container fluid id='bigcontainer'>
           <Row fluid="true" id='navrow'>
-            <Col>
-              <p>Make this a NAV BAR</p>
+            <Col xs={3} style={{margin:'auto', textAlign:'center'}}>
+            </Col>
+            <Col xs={6} style={{textAlign: 'center'}}>
+                <h2>youRL</h2>
+            </Col>
+            <Col xs={3} style={{textAlign: 'right'}}>
             </Col>
           </Row>
           <Row fluid="true" id='bigrow'>
-            <Col xs={3} id='yourstuff'>
-              <p>TOP PUBLIC GROUPS</p>
-            </Col>
-            <Col xs={6}>
-              <h3>DEFAULT HOME PAGE</h3>
+            <Col xs={9} id='medcol'>
+              <NotLoggedIn />
             </Col>
             <Col xs={3} id='profile'>
               <h4>Log In</h4>
@@ -133,7 +136,7 @@ function Login() {
                 <label>Username</label>
                 <input
                   type="text"
-                  id="name"
+                  id="newUserInput"
                   name="name"
                   placeholder="Enter your name"
                   value={inputs.name || ""}
@@ -142,8 +145,8 @@ function Login() {
                 <br />
                 <label>Password</label>
                 <input
-                  type="text"
-                  id="password"
+                  type="password"
+                  id="newUserInput"
                   name="password"
                   placeholder="Enter your password"
                   value={inputs.password || ""}
@@ -151,12 +154,12 @@ function Login() {
                 ></input>
                 <br/>
                 <br/>
-                <input type="submit" value="Log In" onClick={LoginHandler}
+                <input type="submit" id="postBut" value="Log In" onClick={LoginHandler}
                 />
               </form> 
               <br/>
               <h6>Don't have an account?</h6>
-              <Button onClick={(event) => SignUpHandler(event)}> Signup </Button>
+              <Button id="switchBut" onClick={(event) => SignUpHandler(event)}> Signup </Button>
             </Col>      
           </Row>     
         </Container>
