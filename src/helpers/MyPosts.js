@@ -5,7 +5,7 @@ import axios from 'axios';
 import '../pages/Home.css';
 import '../pages/Form.css';
 
-const PATH = "//yourltest/mediashare/src/post-apis/myposts.php";
+const PATH = "https://localhost/mediashare/src/post-apis/myposts.php";
 
 function MyPosts({username}) {
     const [inputs, setInputs] = useState({

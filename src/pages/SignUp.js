@@ -6,7 +6,7 @@ import Login from "./Login";
 import './Home.css';
 import NotLoggedIn from "../helpers/NotLoggedIn";
 
-const PATH = "//yourltest/mediashare/src/user-apis/newuser.php";
+const PATH = "https://localhost/mediashare/src/user-apis/newuser.php";
 
 // NOT GOOD
 function SignUp() {

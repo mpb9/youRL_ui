@@ -5,7 +5,7 @@ import Home from "./Home"
 import SignUp from "./SignUp";
 import NotLoggedIn from "../helpers/NotLoggedIn";
 
-const PATH = "//yourltest/mediashare/src/user-apis/userlogin.php";
+const PATH = "https://localhost/mediashare/src/user-apis/userlogin.php";
 
 function Login() {
 
