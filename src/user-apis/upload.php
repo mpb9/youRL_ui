@@ -5,7 +5,7 @@ header("Access-Control-Allow-Methods: PUT, GET, POST");
 
 $response = array();
 $upload_dir = 'images/';
-$server_url = 'http://yourltest/mediashare/src';
+$server_url = '//yourltest/mediashare/src';
 
 if($_FILES['file']) {
     $count = count($_FILES['file']['name']);

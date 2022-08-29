@@ -5,12 +5,12 @@ import './Post.css';
 import '../pages/Profile.css'
 import { editableInputTypes } from '@testing-library/user-event/dist/utils';
 
-const PATH = "http://yourltest/mediashare/src/user-apis/publicprofile.php";
-const FOLLOW = "http://yourltest/mediashare/src/user-apis/follows.php";
-const ALTFOLLOW = "http://yourltest/mediashare/src/user-apis/alterfollow.php";
-const LIKE = "http://yourltest/mediashare/src/post-apis/like.php";
-const COMMENT = "http://yourltest/mediashare/src/post-apis/comment.php";
-const NEWCOMMENT = "http://yourltest/mediashare/src/post-apis/addcomment.php";
+const PATH = "//yourltest/mediashare/src/user-apis/publicprofile.php";
+const FOLLOW = "//yourltest/mediashare/src/user-apis/follows.php";
+const ALTFOLLOW = "//yourltest/mediashare/src/user-apis/alterfollow.php";
+const LIKE = "//yourltest/mediashare/src/post-apis/like.php";
+const COMMENT = "//yourltest/mediashare/src/post-apis/comment.php";
+const NEWCOMMENT = "//yourltest/mediashare/src/post-apis/addcomment.php";
 
 function ShowPost({id, viewer, poster, title, url, img, likes, comments, caption, date}) {
   
@@ -43,7 +43,7 @@ function ShowPost({id, viewer, poster, title, url, img, likes, comments, caption
     .then((result) => {
       setPosterProfile(values => ({...values, data: result.data}));
       setPosterProfile(values => ({...values, show: true}));
-      const temp = "http://yourltest/mediashare/src/user-apis/" + result.data.proimg;
+      const temp = "//yourltest/mediashare/src/user-apis/" + result.data.proimg;
       setPosterProfile(values => ({...values, proPic: temp}));
 
       axios({

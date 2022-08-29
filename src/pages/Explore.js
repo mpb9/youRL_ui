@@ -8,7 +8,7 @@ import './Home.css';
 import './Form.css';
 import '../helpers/Post.css'
 
-const PATH = "http://yourltest/mediashare/src/user-apis/lastuserpost.php";
+const PATH = "//yourltest/mediashare/src/user-apis/lastuserpost.php";
 
 function Explore({user, isPosting}) {
   const [inputs, setInputs] = useState({

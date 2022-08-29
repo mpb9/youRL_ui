@@ -5,8 +5,8 @@ import axios from 'axios';
 import './Home.css';
 import './Form.css';
 
-const FRIENDFEED = "http://yourltest/mediashare/src/post-apis/feed.php";
-const POPFEED = "http://yourltest/mediashare/src/post-apis/popfeed.php";
+const FRIENDFEED = "//yourltest/mediashare/src/post-apis/feed.php";
+const POPFEED = "//yourltest/mediashare/src/post-apis/popfeed.php";
 
 function Feed({username, friends, incUser, incTitle, incSource, incCaption, search, newSearch}) {
     const [inputs, setInputs] = useState({
