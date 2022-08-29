@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {Container, Row, Col, Button} from 'react-bootstrap';
+import {Container, Row, Col} from 'react-bootstrap';
 import axios from 'axios';
 import Post from './Post';
 import Feed from './Feed';
@@ -8,7 +8,7 @@ import './Home.css';
 import './Form.css';
 import '../helpers/Post.css'
 
-const PATH = "http://localhost/mediashare/src/user-apis/lastuserpost.php";
+const PATH = "http://yourltest/mediashare/src/user-apis/lastuserpost.php";
 
 function Explore({user, isPosting}) {
   const [inputs, setInputs] = useState({

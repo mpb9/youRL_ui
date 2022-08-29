@@ -1,9 +1,6 @@
-import React, {useState, useEffect} from 'react';
-import {Container, Row, Col, Button} from 'react-bootstrap';
-import axios from 'axios';
+import React, {useState} from 'react';
+import {Container, Row, Col} from 'react-bootstrap';
 import Feed from '../pages/Feed';
-import Explore from '../pages/Explore'
-import ShowPost from './ShowPost';
 import './Post.css';
 import '../pages/Home.css';
 

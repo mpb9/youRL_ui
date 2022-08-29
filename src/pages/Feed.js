@@ -5,8 +5,8 @@ import axios from 'axios';
 import './Home.css';
 import './Form.css';
 
-const FRIENDFEED = "http://localhost/mediashare/src/post-apis/feed.php";
-const POPFEED = "http://localhost/mediashare/src/post-apis/popfeed.php";
+const FRIENDFEED = "http://yourltest/mediashare/src/post-apis/feed.php";
+const POPFEED = "http://yourltest/mediashare/src/post-apis/popfeed.php";
 
 function Feed({username, friends, incUser, incTitle, incSource, incCaption, search, newSearch}) {
     const [inputs, setInputs] = useState({
@@ -69,7 +69,6 @@ function Feed({username, friends, incUser, incTitle, incSource, incCaption, sear
         });
       }
     }
-    console.log(inputs.posts);
     return (
       <section style={{width:'100%', margin: '0 auto', padding:'0px'}}>
         {inputs.posts.map((post) =>

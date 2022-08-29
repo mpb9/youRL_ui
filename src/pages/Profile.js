@@ -4,10 +4,10 @@ import { Button, Col, Container, Row } from "react-bootstrap";
 import './Profile.css';
 import MyPosts from "../helpers/MyPosts";
 
-const PATH = "http://localhost/mediashare/src/user-apis/userinfo.php";
-const NEWPROPIC = "http://localhost/mediashare/src/user-apis/upload.php";
-const CHANGEIMG = "http://localhost/mediashare/src/user-apis/newprofileimg.php";
-const CHANGEINFO = "http://localhost/mediashare/src/user-apis/newprofileinfo.php";
+const PATH = "http://yourltest/mediashare/src/user-apis/userinfo.php";
+const NEWPROPIC = "http://yourltest/mediashare/src/user-apis/upload.php";
+const CHANGEIMG = "http://yourltest/mediashare/src/user-apis/newprofileimg.php";
+const CHANGEINFO = "http://yourltest/mediashare/src/user-apis/newprofileinfo.php";
 
 function Profile({user}) {
   const [inputs, setInputs] = useState({
@@ -33,7 +33,7 @@ function Profile({user}) {
       data: inputs
     })
     .then((result) => {
-      const imgAlter = "http://localhost/mediashare/src/user-apis/" + result.data.img
+      const imgAlter = "http://yourltest/mediashare/src/user-apis/" + result.data.img
       setInfo(values => ({...values, ['email']: result.data.email}));
       setInfo(values => ({...values, ['fullname']: result.data.fullname}));
       setInfo(values => ({...values, ['bio']: result.data.bio}));
@@ -54,8 +54,7 @@ function Profile({user}) {
     .catch((error) => {
       console.log(error);
     });
-    console.log(inputs.imgpath);
-    const imgAlter = "http://localhost/mediashare/src/user-apis/" + inputs.imgpath;
+    const imgAlter = "http://yourltest/mediashare/src/user-apis/" + inputs.imgpath;
 
     setInfo(values => ({...values, img: imgAlter}));
   }, [inputs.imgpath]);
@@ -103,7 +102,6 @@ function Profile({user}) {
   }
   const DoneEditingHandler = (event)  => {   
     event.preventDefault();
-    console.log(info);
 
     axios({
       method: "post",
