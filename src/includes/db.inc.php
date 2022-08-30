@@ -1,6 +1,6 @@
 <?php
 try {
-  $pdo = new PDO('mysql:host=localhost;dbname=mshare', 'michaelbeebe', '9Chester!');
+  $pdo = new PDO('mysql:host=yourltest;dbname=mshare', 'michaelbeebe', '9Chester!');
   $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   $pdo->exec('SET NAMES "utf8"');
 
