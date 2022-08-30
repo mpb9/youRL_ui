@@ -5,7 +5,7 @@ import Home from "./Home"
 import SignUp from "./SignUp";
 import NotLoggedIn from "../helpers/NotLoggedIn";
 
-const PATH = "https://localhost/mediashare/src/user-apis/userlogin.php";
+const PATH = "https://curious-froyo-e53265.netlify.app/user-apis/userlogin.php";
 
 function Login() {
 
