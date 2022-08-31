@@ -96,7 +96,7 @@ function Explore({user, isPosting}) {
     if(inputs.link.length < 1) return;
     axios.post(
       'https://api.linkpreview.net',
-      `key=e676560b8697f0ace6eb14828475d882&q=${inputs.link}`,
+      `key=${process.env.REACT_APP_API_KEY}&q=${inputs.link}`,
       {
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'
