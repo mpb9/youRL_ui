@@ -83,7 +83,7 @@ function NotLoggedIn() {
                         id='searchInput' onChange={searchHandler}/>
 
                 <h6 style={{marginLeft: '10px', paddingTop:'10px'}}>
-                  Included Results:
+                  Don't Include:
                   <br/>
                   <input type='submit' name='user' value='user' id='searchType'
                     style={{ backgroundColor: filter.user ? '#ff8903' : '#2297ff'}} onClick={getFilters}/>
@@ -108,15 +108,15 @@ function NotLoggedIn() {
           <Row style={{margin:'0 auto', paddingBottom:'10px'}}>
             
             <Container style={{textAlign:'left', paddingLeft:'20px', paddingRight: '20px', paddingTop:'10px'}}>
-              <h6 style={{margin:'0 auto'}}>Media Sharing Platform</h6>
-              <li style={{paddingLeft: '10px'}}>Share links with others </li> 
-              <li style={{paddingLeft: '10px'}}>Find new articles and content </li> 
-              <h6 style={{margin:'0 auto'}}>Daily Posting</h6>
-              <li style={{paddingLeft: '10px'}}>Limits sharing to once per day</li> 
-              <li style={{paddingLeft: '10px'}}>Allows you to track your top daily Internet content</li> 
-              <h6 style={{margin:'0 auto'}}>Connect with Communities</h6>
-              <li style={{paddingLeft: '10px'}}>Personalized "Friends" feed</li>
-              <li style={{paddingLeft: '10px'}}>Search for users, sources, and topics</li> 
+              <h6 style={{margin:'0 auto', paddingBottom: '3px'}}>Media Sharing Platform</h6>
+              <li style={{paddingLeft: '8px', lineHeight:'110%'}}><span>Share links with others</span></li> 
+              <li style={{paddingLeft: '8px', lineHeight:'110%'}}><span>Find new articles and content</span></li> 
+              <h6 style={{margin:'0 auto', paddingBottom: '3px', paddingTop: '9px'}}>Daily Posting Limits</h6>
+              <li style={{paddingLeft: '8px', lineHeight:'110%'}}><span>Post youRLs once a day</span></li> 
+              <li style={{paddingLeft: '8px', lineHeight:'110%'}}><span>Allows you to track your top daily Internet content</span></li> 
+              <h6 style={{margin:'0 auto', paddingBottom: '3px', paddingTop: '9px'}}>Connect with Communities</h6>
+              <li style={{paddingLeft: '8px', lineHeight:'110%'}}><span>Personalized "Friends" feed</span></li>
+              <li style={{paddingLeft: '8px', lineHeight:'110%'}}><span>Search for users, sources, and topics</span></li> 
             </Container>
           </Row>
         </Container>

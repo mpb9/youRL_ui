@@ -128,7 +128,7 @@ function Countdown({lastTime, username}) {
                         id='searchInput' onChange={searchHandler}/>
 
                 <h6 style={{marginLeft: '10px', paddingTop:'10px'}}>
-                  Included Results:
+                  Don't Include:
                   <br/>
                   <input type='submit' name='user' value='user' id='searchType'
                     style={{ backgroundColor: filter.user ? '#ff8903' : '#2297ff'}} onClick={getFilters}/>
