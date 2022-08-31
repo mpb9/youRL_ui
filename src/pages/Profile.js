@@ -79,7 +79,7 @@ function Profile({user}) {
     });
 
     if(info.img.length == 0){
-      setInfo(values => ({...values, img: lastImg}));
+      setInfo(values => ({...values, img: info.lastImg}));
     }
     const name2 = 'edit';
     const value2 = false;
