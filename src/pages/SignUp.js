@@ -83,15 +83,15 @@ function SignUp() {
             <h6>Username or Email Taken</h6>
             <form action="#">
               <label>Username</label>
-              <input type="text" id="newUserInput" name="name" placeholder="Enter your name"
+              <input type="text" id="newUserInput" name="name" placeholder="Enter name" 
                 value={inputs.name || ""} onChange={handleChange} />
               <br />
               <label>Password</label>
-              <input type="password" id="newUserInput" name="password" placeholder="Enter your password"
+              <input type="password" id="newUserInput" name="password" placeholder="Enter password" autoComplete="on"
                 value={inputs.password || ""} onChange={handleChange} />
               <br/>
               <label>Email</label>
-              <input type="text" id="newUserInput" name="email" placeholder="Enter your email"
+              <input type="text" id="newUserInput" name="email" placeholder="Enter email"
                 value={inputs.email || ""} onChange={handleChange} />
               <br />
               <br/>
@@ -124,15 +124,15 @@ function SignUp() {
               <h3>Create Account</h3>
               <form action="#">
                 <label>Username</label>
-                <input type="text" id="newUserInput" name="name" placeholder="Enter your name"
+                <input type="text" id="newUserInput" name="name" placeholder="Enter name"
                 value={inputs.name || ""} onChange={handleChange} />
                 <br />
                 <label>Password</label>
-                <input type="password" id="newUserInput" name="password" placeholder="Enter your password"
+                <input type="password" id="newUserInput" name="password" placeholder="Enter password" autoComplete="on"
                 value={inputs.password || ""} onChange={handleChange} />
                 <br/>
                 <label>Email</label>
-                <input type="text" id="newUserInput" name="email" placeholder="Enter your email"
+                <input type="text" id="newUserInput" name="email" placeholder="Enter email"
                 value={inputs.email || ""} onChange={handleChange} />
                 <br />
                 <br/>

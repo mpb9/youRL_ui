@@ -88,7 +88,7 @@ function Login() {
                   type="text"
                   id="newUserInput"
                   name="name"
-                  placeholder="Enter your name"
+                  placeholder="Enter name"
                   value={inputs.name || ""}
                   onChange={handleChange}
                 />
@@ -98,7 +98,8 @@ function Login() {
                   type="password"
                   id="newUserInput"
                   name="password"
-                  placeholder="Enter your password"
+                  autoComplete="on"
+                  placeholder="Enter password"
                   value={inputs.password || ""}
                   onChange={handleChange}
                 ></input>
@@ -138,7 +139,7 @@ function Login() {
                   type="text"
                   id="newUserInput"
                   name="name"
-                  placeholder="Enter your name"
+                  placeholder="Enter name"
                   value={inputs.name || ""}
                   onChange={handleChange}
                 />
@@ -148,7 +149,8 @@ function Login() {
                   type="password"
                   id="newUserInput"
                   name="password"
-                  placeholder="Enter your password"
+                  autoComplete="on"
+                  placeholder="Enter password"
                   value={inputs.password || ""}
                   onChange={handleChange}
                 ></input>
