@@ -4,16 +4,13 @@ import { Button, Container, Row } from "react-bootstrap";
 import './Profile.css';
 import MyPosts from "../helpers/MyPosts";
 
-const PATH = "https://you-rl.000webhostapp.com/youRLapi/user-apis/userinfo.php";
-const NEWPROPIC = "https://you-rl.000webhostapp.com/youRLapi/user-apis/upload.php";
-const CHANGEIMG = "https://you-rl.000webhostapp.com/youRLapi/user-apis/newprofileimg.php";
-const CHANGEINFO = "https://you-rl.000webhostapp.com/youRLapi/user-apis/newprofileinfo.php";
+const USER_INFO = "https://you-rl.000webhostapp.com/youRLapi/user-apis/userinfo.php";
+const NEW_PROFILE_INFO = "https://you-rl.000webhostapp.com/youRLapi/user-apis/newprofileinfo.php";
 
 function Profile({user}) {
   const [inputs, setInputs] = useState({
     name: user,
-    edit: false,
-    imgpath: ''
+    edit: false
   });
   const [info, setInfo] = useState({
     name: user,
@@ -22,70 +19,36 @@ function Profile({user}) {
     bio: '',
     img: ''
   });
-  const [img, setImg] = useState({});
 
 
-  useEffect(() => {
+  useEffect(() => { // GETS USER'S EMAIL, FULLNAME, BIO, IMG ON LOAD
     axios({
       method: "post",
-      url: `${PATH}`,
+      url: `${USER_INFO}`,
       headers: { "content-type": "application/json" },
       data: inputs
     })
     .then((result) => {
-      const imgAlter = "https://you-rl.000webhostapp.com/youRLapi/user-apis/" + result.data.img
       setInfo(values => ({...values, ['email']: result.data.email}));
       setInfo(values => ({...values, ['fullname']: result.data.fullname}));
       setInfo(values => ({...values, ['bio']: result.data.bio}));
-      setInfo(values => ({...values, ['img']: imgAlter}));
+      setInfo(values => ({...values, ['img']: result.data.img}));
     })
     .catch((error) => {
       console.log(error);
     });
   }, []);
 
-  useEffect(() => {
-    axios({
-      method: "post",
-      url: `${CHANGEIMG}`,
-      headers: { "content-type": "application/json" },
-      data: inputs
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-    const imgAlter = "https://you-rl.000webhostapp.com/youRLapi/user-apis/" + inputs.imgpath;
-
-    setInfo(values => ({...values, img: imgAlter}));
-  }, [inputs.imgpath]);
-
-  const EditHandler = (event)  => {   
+  const EditHandler = (event)  => {   // HANDLES EDIT BUTTON CLICK
     event.preventDefault();
     const name2 = 'edit';
     const value2 = true;
     setInputs(values => ({...values, [name2]: value2}))
   }
 
-  const imgHandler = (event) => {
+  const imgHandler = (event) => { 
     const value = event.target.files;
-    setImg(values => ({...values, ...value}));
-  }
-  const addImg = (event) => {
-    event.preventDefault();
-    const imgData = new FormData();
-    imgData.append("file[]", img[0]);
-    axios({
-      method: "post",
-      url: `${NEWPROPIC}`,
-      headers: {  "content-type": 'multipart/form-data' },
-      data: imgData
-    })
-    .then((result) => {
-      setInputs(values => ({...values, imgpath: result.data}));
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+    setInfo(values => ({...values, img: value}));
   }
 
   const bioHandler = (event) => {
@@ -100,31 +63,29 @@ function Profile({user}) {
     const value = event.target.value;
     setInfo(values => ({...values, email: value}))
   }
+
   const DoneEditingHandler = (event)  => {   
     event.preventDefault();
-
     axios({
       method: "post",
-      url: `${CHANGEINFO}`,
+      url: `${NEW_PROFILE_INFO}`,
       headers: { "content-type": "application/json" },
       data: info
-    })
-    .then((result) => {
+    }).then((result) => {
       console.log(result.data);
-    })
-    .catch((error) => {
+    }).catch((error) => {
       console.log(error);
     });
 
     const name2 = 'edit';
     const value2 = false;
-    setInputs(values => ({...values, [name2]: value2}))
+    setInputs(values => ({...values, [name2]: value2}));
   }
   const CancelEditingHandler = (event)  => {   
     event.preventDefault();
     const name2 = 'edit';
     const value2 = false;
-    setInputs(values => ({...values, [name2]: value2}))
+    setInputs(values => ({...values, [name2]: value2}));
   }
 
   
@@ -151,17 +112,15 @@ function Profile({user}) {
       <Container style={{ padding:'5px', width:'100%', margin: 'auto'}}>
           <h4>Edit: {user}</h4>
           <form action='#' style={{width:'90%',  margin:'auto'}}>
+            <img id='profImg' src={info.img} alt="No Profile Picture"/>
             <h6>Profile Picture</h6> 
-            <input type="file" name="file" id="fileInput" onChange={imgHandler} />
-            <input id='fileUpload' type="submit" name="submit" value="Upload" onClick={addImg}/>
-          </form>
-          <form action='#' style={{width:'90%', margin:'auto'}}>
+            <input type="text" id="editNameInput" placeholder="Link to Image" value={info.img || ""} onChange={imgHandler}/>
             <h6>Full Name</h6>
             <input type="text" id="editNameInput" placeholder="Enter name" value={info.fullname || ""} onChange={nameHandler}/>
             <h6>Email</h6>
             <input type="text" id="editNameInput" placeholder="Enter name" value={info.email || ""} onChange={emailHandler}/>
             <h6>Bio</h6>     
-            <textarea id='editBioInput' type='text' placeholder="bio" value={info.bio || ""} onChange={bioHandler} /> 
+            <textarea type='text' id='editBioInput' placeholder="bio" value={info.bio || ""} onChange={bioHandler} /> 
             
             <Button id='nvmBut' onClick={(event) => CancelEditingHandler(event)}> Cancel </Button>
             <Button id='doneBut' onClick={(event) => DoneEditingHandler(event)}> Done </Button>

@@ -5,12 +5,12 @@ import './Post.css';
 import '../pages/Profile.css'
 import { editableInputTypes } from '@testing-library/user-event/dist/utils';
 
-const PATH = "https://you-rl.000webhostapp.com/youRLapi/user-apis/publicprofile.php";
+const PUBLIC_PROFILE = "https://you-rl.000webhostapp.com/youRLapi/user-apis/publicprofile.php";
 const FOLLOW = "https://you-rl.000webhostapp.com/youRLapi/user-apis/follows.php";
-const ALTFOLLOW = "https://you-rl.000webhostapp.com/youRLapi/user-apis/alterfollow.php";
+const ALTER_FOLLOW = "https://you-rl.000webhostapp.com/youRLapi/user-apis/alterfollow.php";
 const LIKE = "https://you-rl.000webhostapp.com/youRLapi/post-apis/like.php";
 const COMMENT = "https://you-rl.000webhostapp.com/youRLapi/post-apis/comment.php";
-const NEWCOMMENT = "https://you-rl.000webhostapp.com/youRLapi/post-apis/addcomment.php";
+const ADD_COMMENT = "https://you-rl.000webhostapp.com/youRLapi/post-apis/addcomment.php";
 
 function ShowPost({id, viewer, poster, title, url, img, likes, comments, caption, date}) {
   
@@ -36,15 +36,14 @@ function ShowPost({id, viewer, poster, title, url, img, likes, comments, caption
     event.preventDefault();
     axios({
       method: "post",
-      url: `${PATH}`,
+      url: `${PUBLIC_PROFILE}`,
       headers: { "content-type": "application/json" },
       data: posterProfile
     })
     .then((result) => {
       setPosterProfile(values => ({...values, data: result.data}));
       setPosterProfile(values => ({...values, show: true}));
-      const temp = "https://you-rl.000webhostapp.com/youRLapi/user-apis/" + result.data.proimg;
-      setPosterProfile(values => ({...values, proPic: temp}));
+      setPosterProfile(values => ({...values, proPic: result.data.proimg}));
 
       axios({
         method: "post",
@@ -69,7 +68,7 @@ function ShowPost({id, viewer, poster, title, url, img, likes, comments, caption
     event.preventDefault();
     axios({
       method: "post",
-      url: `${ALTFOLLOW}`,
+      url: `${ALTER_FOLLOW}`,
       headers: { "content-type": "application/json" },
       data: posterProfile
     })
@@ -139,7 +138,7 @@ function ShowPost({id, viewer, poster, title, url, img, likes, comments, caption
     event.preventDefault();
     axios({
       method: "post",
-      url: `${NEWCOMMENT}`,
+      url: `${ADD_COMMENT}`,
       headers: { "content-type": "application/json" },
       data: posterProfile
     })
