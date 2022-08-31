@@ -1,6 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import {Container, Row, Col, Button, NavLink} from 'react-bootstrap';
-import axios from 'axios';
+import React from 'react';
+import {Container, Row, Col, Button } from 'react-bootstrap';
 import './Post.css';
 
 function ShowMyPosts({poster, title, url, img, caption, date}) {

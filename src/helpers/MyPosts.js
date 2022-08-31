@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react';
-import {Container, Row, Col, Button} from 'react-bootstrap';
+import {Container, Row } from 'react-bootstrap';
 import ShowMyPosts from './ShowMyPosts';
 import axios from 'axios';
 import '../pages/Home.css';
 import '../pages/Form.css';
 
-const PATH = "https://localhost/mediashare/src/post-apis/myposts.php";
+const PATH = "https://you-rl.000webhostapp.com/youRLapi/post-apis/myposts.php";
 
 function MyPosts({username}) {
     const [inputs, setInputs] = useState({

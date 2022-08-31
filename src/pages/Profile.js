@@ -1,13 +1,13 @@
-import React, { Component, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Button, Col, Container, Row } from "react-bootstrap";
+import { Button, Container, Row } from "react-bootstrap";
 import './Profile.css';
 import MyPosts from "../helpers/MyPosts";
 
-const PATH = "https://localhost/mediashare/src/user-apis/userinfo.php";
-const NEWPROPIC = "https://localhost/mediashare/src/user-apis/upload.php";
-const CHANGEIMG = "https://localhost/mediashare/src/user-apis/newprofileimg.php";
-const CHANGEINFO = "https://localhost/mediashare/src/user-apis/newprofileinfo.php";
+const PATH = "https://you-rl.000webhostapp.com/youRLapi/user-apis/userinfo.php";
+const NEWPROPIC = "https://you-rl.000webhostapp.com/youRLapi/user-apis/upload.php";
+const CHANGEIMG = "https://you-rl.000webhostapp.com/youRLapi/user-apis/newprofileimg.php";
+const CHANGEINFO = "https://you-rl.000webhostapp.com/youRLapi/user-apis/newprofileinfo.php";
 
 function Profile({user}) {
   const [inputs, setInputs] = useState({
@@ -33,7 +33,7 @@ function Profile({user}) {
       data: inputs
     })
     .then((result) => {
-      const imgAlter = "https://localhost/mediashare/src/user-apis/" + result.data.img
+      const imgAlter = "https://you-rl.000webhostapp.com/youRLapi/user-apis/" + result.data.img
       setInfo(values => ({...values, ['email']: result.data.email}));
       setInfo(values => ({...values, ['fullname']: result.data.fullname}));
       setInfo(values => ({...values, ['bio']: result.data.bio}));
@@ -54,7 +54,7 @@ function Profile({user}) {
     .catch((error) => {
       console.log(error);
     });
-    const imgAlter = "https://localhost/mediashare/src/user-apis/" + inputs.imgpath;
+    const imgAlter = "https://you-rl.000webhostapp.com/youRLapi/user-apis/" + inputs.imgpath;
 
     setInfo(values => ({...values, img: imgAlter}));
   }, [inputs.imgpath]);

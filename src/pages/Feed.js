@@ -1,12 +1,11 @@
 import React, {useState, useEffect} from 'react';
-import {Container, Row, Col, Button} from 'react-bootstrap';
 import ShowPost from '../helpers/ShowPost';
 import axios from 'axios';
 import './Home.css';
 import './Form.css';
 
-const FRIENDFEED = "http://localhost/mediashare/src/post-apis/feed.php";
-const POPFEED = "http://localhost/mediashare/src/post-apis/popfeed.php";
+const FRIENDFEED = "https://you-rl.000webhostapp.com/youRLapi/post-apis/feed.php";
+const POPFEED = "https://you-rl.000webhostapp.com/youRLapi/post-apis/popfeed.php";
 
 function Feed({username, friends, incUser, incTitle, incSource, incCaption, search, newSearch}) {
     const [inputs, setInputs] = useState({

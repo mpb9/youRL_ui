@@ -1,16 +1,16 @@
 import React, {useState, useEffect} from 'react';
-import {Container, Row, Col, Button, NavLink} from 'react-bootstrap';
+import {Container, Row, Col, Button } from 'react-bootstrap';
 import axios from 'axios';
 import './Post.css';
 import '../pages/Profile.css'
 import { editableInputTypes } from '@testing-library/user-event/dist/utils';
 
-const PATH = "https://localhost/mediashare/src/user-apis/publicprofile.php";
-const FOLLOW = "https://localhost/mediashare/src/user-apis/follows.php";
-const ALTFOLLOW = "https://localhost/mediashare/src/user-apis/alterfollow.php";
-const LIKE = "https://localhost/mediashare/src/post-apis/like.php";
-const COMMENT = "https://localhost/mediashare/src/post-apis/comment.php";
-const NEWCOMMENT = "https://localhost/mediashare/src/post-apis/addcomment.php";
+const PATH = "https://you-rl.000webhostapp.com/youRLapi/user-apis/publicprofile.php";
+const FOLLOW = "https://you-rl.000webhostapp.com/youRLapi/user-apis/follows.php";
+const ALTFOLLOW = "https://you-rl.000webhostapp.com/youRLapi/user-apis/alterfollow.php";
+const LIKE = "https://you-rl.000webhostapp.com/youRLapi/post-apis/like.php";
+const COMMENT = "https://you-rl.000webhostapp.com/youRLapi/post-apis/comment.php";
+const NEWCOMMENT = "https://you-rl.000webhostapp.com/youRLapi/post-apis/addcomment.php";
 
 function ShowPost({id, viewer, poster, title, url, img, likes, comments, caption, date}) {
   
@@ -43,7 +43,7 @@ function ShowPost({id, viewer, poster, title, url, img, likes, comments, caption
     .then((result) => {
       setPosterProfile(values => ({...values, data: result.data}));
       setPosterProfile(values => ({...values, show: true}));
-      const temp = "https://localhost/mediashare/src/user-apis/" + result.data.proimg;
+      const temp = "https://you-rl.000webhostapp.com/youRLapi/user-apis/" + result.data.proimg;
       setPosterProfile(values => ({...values, proPic: temp}));
 
       axios({

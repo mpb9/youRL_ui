@@ -4,13 +4,6 @@ import Profile from './Profile';
 import './Home.css';
 import Login from './Login';
 import Explore from './Explore';
-import { Link } from 'react-router-dom';
-
-/*  NEED TO IMPLIMENT useContext (or another hook) in order to 
-    return to the homepage with data obtained from login/signup.
-    Right now, doesn't redirect back to home page (still at local.../login or /signup w/ Home showing).
-    Sending back just the {this.props.name} element doesnt give enough functionality.
-*/
 
 function Home({username}) {
     const [inputs, setInputs] = useState({

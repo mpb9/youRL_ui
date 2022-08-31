@@ -5,7 +5,7 @@ import Explore from './Explore';
 import './Home.css';
 import './Form.css';
 
-const PATH = "https://localhost/mediashare/src/post-apis/newpost.php";
+const PATH = "https://you-rl.000webhostapp.com/youRLapi/post-apis/newpost.php";
 // post doesnt include: time or tags
 
 function Post({username, preview}) {
