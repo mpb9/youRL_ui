@@ -5,7 +5,7 @@ import Home from "./Home"
 import SignUp from "./SignUp";
 import NotLoggedIn from "../helpers/NotLoggedIn";
 
-const PATH = "https://you-rl.000webhostapp.com/youRLapi/user-apis/userlogin.php";
+const USER_LOGIN = "https://you-rl.000webhostapp.com/youRLapi/user-apis/userlogin.php";
 
 function Login() {
 
@@ -28,7 +28,7 @@ function Login() {
     event.preventDefault();
     axios({
     method: "post",
-    url: `${PATH}`,
+    url: `${USER_LOGIN}`,
     headers: { "content-type": "application/json" },
     data: inputs
     })

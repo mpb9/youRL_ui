@@ -6,7 +6,7 @@ import Login from "./Login";
 import './Home.css';
 import NotLoggedIn from "../helpers/NotLoggedIn";
 
-const PATH = "https://you-rl.000webhostapp.com/youRLapi/user-apis/newuser.php";
+const NEW_USER = "https://you-rl.000webhostapp.com/youRLapi/user-apis/newuser.php";
 
 // NOT GOOD
 function SignUp() {
@@ -30,7 +30,7 @@ function SignUp() {
     event.preventDefault();
     axios({
     method: "post",
-    url: `${PATH}`,
+    url: `${NEW_USER}`,
     headers: { "content-type": "application/json" },
     data: inputs
     })

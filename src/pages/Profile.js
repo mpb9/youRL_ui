@@ -17,7 +17,8 @@ function Profile({user}) {
     email: '',
     fullname: '',
     bio: '',
-    img: ''
+    img: '',
+    lastImg: ''
   });
 
 
@@ -33,6 +34,7 @@ function Profile({user}) {
       setInfo(values => ({...values, ['fullname']: result.data.fullname}));
       setInfo(values => ({...values, ['bio']: result.data.bio}));
       setInfo(values => ({...values, ['img']: result.data.img}));
+      setInfo(values => ({...values, ['lastImg']: result.data.img}));
     })
     .catch((error) => {
       console.log(error);
@@ -47,10 +49,9 @@ function Profile({user}) {
   }
 
   const imgHandler = (event) => { 
-    const value = event.target.files;
+    const value = event.target.value;
     setInfo(values => ({...values, img: value}));
   }
-
   const bioHandler = (event) => {
     const value = event.target.value;
     setInfo(values => ({...values, bio: value}))
@@ -77,6 +78,9 @@ function Profile({user}) {
       console.log(error);
     });
 
+    if(info.img.length == 0){
+      setInfo(values => ({...values, img: lastImg}));
+    }
     const name2 = 'edit';
     const value2 = false;
     setInputs(values => ({...values, [name2]: value2}));
@@ -118,7 +122,7 @@ function Profile({user}) {
             <h6>Full Name</h6>
             <input type="text" id="editNameInput" placeholder="Enter name" value={info.fullname || ""} onChange={nameHandler}/>
             <h6>Email</h6>
-            <input type="text" id="editNameInput" placeholder="Enter name" value={info.email || ""} onChange={emailHandler}/>
+            <input type="text" id="editNameInput" placeholder="Enter email" value={info.email || ""} onChange={emailHandler}/>
             <h6>Bio</h6>     
             <textarea type='text' id='editBioInput' placeholder="bio" value={info.bio || ""} onChange={bioHandler} /> 
             
