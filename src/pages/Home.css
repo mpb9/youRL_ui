@@ -4,16 +4,12 @@
     height: inherit;
     padding: 0px;
 }
-#nostuff{
-    background-color: #ff8903;
-    margin: 0 auto;
-    height: inherit;
-}
 #yourstuff{
     background-color: #ff8903;
     margin: 0 auto;
     padding:0px;
     height: inherit;
+    overflow-y: hidden;
 }
 #middlecol{
     margin:0px;

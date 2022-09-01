@@ -73,7 +73,7 @@
 #mypostrow{
   height: 92%;
   width: inherit;
-  margin: auto;
+  margin: 0 auto;
   padding: 0px;
   -ms-overflow-style: none; /* for Internet Explorer, Edge */
   scrollbar-width: none; /* for Firefox */
