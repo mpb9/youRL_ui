@@ -80,33 +80,21 @@ function Login() {
               <NotLoggedIn />
             </Col>
             <Col xs={3} id='profile'>
-              <h3>Log In</h3>
               <h6>User Not Found</h6>
               <form action="#">
-                <label>Username</label>
-                <input
-                  type="text"
-                  id="newUserInput"
-                  name="name"
-                  placeholder="Enter name"
-                  value={inputs.name || ""}
-                  onChange={handleChange}
-                />
-                <br />
-                <label>Password</label>
-                <input
-                  type="password"
-                  id="newUserInput"
-                  name="password"
-                  autoComplete="on"
-                  placeholder="Enter password"
-                  value={inputs.password || ""}
-                  onChange={handleChange}
-                ></input>
+                <input type="submit" id="loginBut" value="Log In" onClick={LoginHandler}/>
+                <Container id='topLoginCircle'>
+                <input type="text" id="loginInput" name="name" placeholder="username" maxLength="30"
+                  value={inputs.name || ""} onChange={handleChange} />
+                </Container >
+                <Container id='bottomLoginCircle'>
+                <input type="password" id="loginInput" name="password" autoComplete="on" maxLength="30"
+                  placeholder="password" value={inputs.password || ""} onChange={handleChange}></input>
+
+                </Container>
+
                 <br/>
-                <br/>
-                <input type="submit" id="postBut" value="Log In" onClick={LoginHandler}
-                />
+                
               </form> 
               <br/>
               <h6>Don't have an account?</h6>
@@ -132,32 +120,21 @@ function Login() {
               <NotLoggedIn />
             </Col>
             <Col xs={3} id='profile'>
-              <h4>Log In</h4>
               <form action="#">
-                <label>Username</label>
-                <input
-                  type="text"
-                  id="newUserInput"
-                  name="name"
-                  placeholder="Enter name"
-                  value={inputs.name || ""}
-                  onChange={handleChange}
-                />
-                <br />
-                <label>Password</label>
-                <input
-                  type="password"
-                  id="newUserInput"
-                  name="password"
-                  autoComplete="on"
-                  placeholder="Enter password"
-                  value={inputs.password || ""}
-                  onChange={handleChange}
-                ></input>
+                <input type="submit" id="loginBut" value="Log In" onClick={LoginHandler}/>
+                
+                <Container id='topLoginCircle'>
+                <input type="text" id="loginInput" name="name" placeholder="username" maxLength="30"
+                  value={inputs.name || ""} onChange={handleChange} />
+                </Container >
+                <Container id='bottomLoginCircle'>
+                <input type="password" id="loginInput" name="password" autoComplete="on" maxLength="30"
+                  placeholder="password" value={inputs.password || ""} onChange={handleChange}></input>
+
+                </Container>
+
                 <br/>
-                <br/>
-                <input type="submit" id="postBut" value="Log In" onClick={LoginHandler}
-                />
+                
               </form> 
               <br/>
               <h6>Don't have an account?</h6>

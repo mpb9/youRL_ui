@@ -80,6 +80,8 @@ function Profile({user}) {
 
     if(info.img.length == 0){
       setInfo(values => ({...values, img: info.lastImg}));
+    } else {
+      setInfo(values => ({...values, lastImg: info.img}));
     }
     const name2 = 'edit';
     const value2 = false;
@@ -87,6 +89,13 @@ function Profile({user}) {
   }
   const CancelEditingHandler = (event)  => {   
     event.preventDefault();
+
+    if(info.img.length == 0){
+      setInfo(values => ({...values, img: info.lastImg}));
+    } else {
+      setInfo(values => ({...values, lastImg: info.img}));
+    }
+    
     const name2 = 'edit';
     const value2 = false;
     setInputs(values => ({...values, [name2]: value2}));
@@ -118,13 +127,13 @@ function Profile({user}) {
           <form action='#' style={{width:'90%',  margin:'auto'}}>
             <img id='profImg' src={info.img} alt="No Profile Picture"/>
             <h6>Profile Picture</h6> 
-            <input type="text" id="editNameInput" placeholder="Link to Image" value={info.img || ""} onChange={imgHandler}/>
+            <input type="text" id="editNameInput" placeholder="image link" value={info.img || ""} onChange={imgHandler}/>
             <h6>Full Name</h6>
-            <input type="text" id="editNameInput" placeholder="Enter name" value={info.fullname || ""} onChange={nameHandler}/>
+            <input type="text" id="editNameInput" placeholder="full name" maxLength="50" value={info.fullname || ""} onChange={nameHandler}/>
             <h6>Email</h6>
-            <input type="text" id="editNameInput" placeholder="Enter email" value={info.email || ""} onChange={emailHandler}/>
+            <input type="text" id="editNameInput" placeholder="email" maxLength="50" value={info.email || ""} onChange={emailHandler}/>
             <h6>Bio</h6>     
-            <textarea type='text' id='editBioInput' placeholder="bio" value={info.bio || ""} onChange={bioHandler} /> 
+            <textarea type='text' id='editBioInput' placeholder="bio" maxLength="150" value={info.bio || ""} onChange={bioHandler} /> 
             
             <Button id='nvmBut' onClick={(event) => CancelEditingHandler(event)}> Cancel </Button>
             <Button id='doneBut' onClick={(event) => DoneEditingHandler(event)}> Done </Button>

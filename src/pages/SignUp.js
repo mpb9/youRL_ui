@@ -79,23 +79,28 @@ function SignUp() {
           <NotLoggedIn />
         </Col>
         <Col xs={3} id='profile'>
-            <h3>Create Account</h3>
             <h6>Username or Email Taken</h6>
             <form action="#">
-              <label>Username</label>
-              <input type="text" id="newUserInput" name="name" placeholder="Enter name" 
-                value={inputs.name || ""} onChange={handleChange} />
-              <br />
-              <label>Password</label>
-              <input type="password" id="newUserInput" name="password" placeholder="Enter password" autoComplete="on"
-                value={inputs.password || ""} onChange={handleChange} />
-              <br/>
-              <label>Email</label>
-              <input type="text" id="newUserInput" name="email" placeholder="Enter email"
-                value={inputs.email || ""} onChange={handleChange} />
-              <br />
-              <br/>
-                <input type="submit" id="postBut" value="Create" onClick={newUserHandler} />
+                <input type="submit" id="loginBut" value="Create Account" onClick={newUserHandler} />
+                  
+                <Container id='topNewUserCircle'>
+                  <input type="text" id="newUserInput" name="name" placeholder="username" maxLength="30"
+                  value={inputs.name || ""} onChange={handleChange} />
+                </Container>
+
+                <Container id='middleNewUserCircle'>
+                  <input type="password" id="newUserInput" name="password" placeholder="password" autoComplete="on" maxLength="30"
+                  value={inputs.password || ""} onChange={handleChange} />
+                  <br/>
+                </Container>
+
+                <Container id='bottomLoginCircle'>
+                  <input type="text" id="newUserInput" name="email" placeholder="email" maxLength="50"
+                  value={inputs.email || ""} onChange={handleChange} />
+                </Container>
+
+                <br/>
+                 
             </form>
             <br/>
             <h6>Already have an account?</h6>
@@ -121,23 +126,27 @@ function SignUp() {
             <NotLoggedIn />
           </Col>
           <Col xs={3} id='profile'>
-              <h3>Create Account</h3>
               <form action="#">
-                <label>Username</label>
-                <input type="text" id="newUserInput" name="name" placeholder="Enter name"
-                value={inputs.name || ""} onChange={handleChange} />
-                <br />
-                <label>Password</label>
-                <input type="password" id="newUserInput" name="password" placeholder="Enter password" autoComplete="on"
-                value={inputs.password || ""} onChange={handleChange} />
+                <input type="submit" id="loginBut" value="Create Account" onClick={newUserHandler} />
+                  
+                <Container id='topNewUserCircle'>
+                  <input type="text" id="newUserInput" name="name" placeholder="username" maxLength="30"
+                  value={inputs.name || ""} onChange={handleChange} />
+                </Container>
+
+                <Container id='middleNewUserCircle'>
+                  <input type="password" id="newUserInput" name="password" placeholder="password" autoComplete="on" maxLength="30"
+                  value={inputs.password || ""} onChange={handleChange} />
+                  <br/>
+                </Container>
+
+                <Container id='bottomLoginCircle'>
+                  <input type="text" id="newUserInput" name="email" placeholder="email" maxLength="50"
+                  value={inputs.email || ""} onChange={handleChange} />
+                </Container>
+
                 <br/>
-                <label>Email</label>
-                <input type="text" id="newUserInput" name="email" placeholder="Enter email"
-                value={inputs.email || ""} onChange={handleChange} />
-                <br />
-                <br/>
-                <input type="submit" id="postBut" value="Create"
-                onClick={newUserHandler} />
+                 
               </form>
               <br/>
               <h6>Already have an account?</h6>

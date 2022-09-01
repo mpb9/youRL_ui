@@ -179,7 +179,7 @@ function Explore({user, isPosting}) {
               <Container style={{textAlign:'center', paddingLeft:'8px', paddingTop:'10px'}}>
                 <h5>Search Feed:</h5>
               <form action='#'>
-                <input type='text' placeholder="Search" value={filter.query || ""} 
+                <input type='text' placeholder="search" value={filter.query || ""} 
                         id='searchInput' onChange={searchHandler}/>
 
                 <h6 style={{marginLeft: '10px', paddingTop:'10px'}}>
@@ -210,7 +210,7 @@ function Explore({user, isPosting}) {
                 type="text"
                 id="postInput"
                 name="link"
-                placeholder="Enter your link"
+                placeholder="your link"
                 value={inputs.link || ""}
                 onChange={getLink}
               />

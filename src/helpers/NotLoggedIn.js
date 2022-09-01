@@ -79,7 +79,7 @@ function NotLoggedIn() {
             <Container style={{textAlign:'center', paddingLeft:'8px', paddingTop:'10px'}}>
               <h5>Search Feed:</h5>
               <form action='#'>
-                <input type='text' placeholder="Search" value={filter.query || ""} 
+                <input type='text' placeholder="search" value={filter.query || ""} 
                         id='searchInput' onChange={searchHandler}/>
 
                 <h6 style={{marginLeft: '10px', paddingTop:'10px'}}>

@@ -238,7 +238,7 @@ function ShowPost({id, viewer, poster, title, url, img, likes, comments, caption
         </Row>
         <Row style={{margin:'0 auto', padding:'10px'}}>
           <form action='#'style={{margin:'0 auto', padding:'0px'}} >
-            <textarea id='commentInput' type='text' placeholder="Comment" value={posterProfile.newComment || ""} onChange={handleComment} />
+            <textarea id='commentInput' type='text' placeholder="comment" maxLength="200" value={posterProfile.newComment || ""} onChange={handleComment} />
             <br/>
             <input id='commentBut' style={{margin: 'auto'}} type="submit" value="Comment" onClick={addComment} />
           </form>

@@ -64,7 +64,7 @@ function Post({username, preview}) {
             <h6 style={{overflow: 'hidden', marginBottom: '0px'}}>URL:</h6>
             <p style={{overflowX: 'hidden', marginTop: '0px', marginBottom: '15px', color: '#4c4c4c'}}>{inputs.url}</p>
             <h6>Title: 
-              <input id='titleinput' type='text' name='title' value={inputs.title} onChange={handleChange} />
+              <input id='titleinput' type='text' name='title' maxLength="80" value={inputs.title} onChange={handleChange} />
             </h6>
           </Col>
           <Col xs={4} style={{margin: 'auto', overflow: 'hidden'}}>
@@ -73,7 +73,7 @@ function Post({username, preview}) {
         </Row>
         <Row style={{margin: 'auto', textAlign:'left', padding:'10px', paddingTop: '0px'}}>
           <h6 style={{marginLeft:'-10px'}}>Caption: </h6>
-          <textarea id='captioninput' type='text' name='description' value={inputs.description} onChange={handleChange} />
+          <textarea id='captioninput' type='text' name='description' maxLength="300" value={inputs.description} onChange={handleChange} />
         </Row>
         <Row style={{textAlign: 'center', padding:'10px'}}>
           <input id='submitBut' style={{margin: 'auto'}} type="submit" value="Post" onClick={handleSubmit} />
