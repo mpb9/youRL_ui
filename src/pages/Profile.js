@@ -4,8 +4,8 @@ import { Button, Container, Row } from "react-bootstrap";
 import './Profile.css';
 import MyPosts from "../helpers/MyPosts";
 
-const USER_INFO = "https://you-rl.000webhostapp.com/youRLapi/user-apis/userinfo.php";
-const NEW_PROFILE_INFO = "https://you-rl.000webhostapp.com/youRLapi/user-apis/newprofileinfo.php";
+const USER_INFO = "http://youRL.site/youRLapi/user-apis/userinfo.php";
+const NEW_PROFILE_INFO = "http://youRL.site/youRLapi/user-apis/newprofileinfo.php";
 
 function Profile({user}) {
   const [inputs, setInputs] = useState({

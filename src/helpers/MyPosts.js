@@ -5,7 +5,7 @@ import axios from 'axios';
 import '../pages/Home.css';
 import '../pages/Form.css';
 
-const MY_POSTS = "https://you-rl.000webhostapp.com/youRLapi/post-apis/myposts.php";
+const MY_POSTS = "http://youRL.site/youRLapi/post-apis/myposts.php";
 
 function MyPosts({username}) {
     const [inputs, setInputs] = useState({

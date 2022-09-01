@@ -5,7 +5,7 @@ import Home from "./Home"
 import SignUp from "./SignUp";
 import NotLoggedIn from "../helpers/NotLoggedIn";
 
-const USER_LOGIN = "https://you-rl.000webhostapp.com/youRLapi/user-apis/userlogin.php";
+const USER_LOGIN = "http://youRL.site/youRLapi/user-apis/userlogin.php";
 
 function Login() {
 

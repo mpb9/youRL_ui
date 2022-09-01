@@ -5,12 +5,12 @@ import './Post.css';
 import '../pages/Profile.css'
 import { editableInputTypes } from '@testing-library/user-event/dist/utils';
 
-const PUBLIC_PROFILE = "https://you-rl.000webhostapp.com/youRLapi/user-apis/publicprofile.php";
-const FOLLOW = "https://you-rl.000webhostapp.com/youRLapi/user-apis/follows.php";
-const ALTER_FOLLOW = "https://you-rl.000webhostapp.com/youRLapi/user-apis/alterfollow.php";
-const LIKE = "https://you-rl.000webhostapp.com/youRLapi/post-apis/like.php";
-const COMMENT = "https://you-rl.000webhostapp.com/youRLapi/post-apis/comment.php";
-const ADD_COMMENT = "https://you-rl.000webhostapp.com/youRLapi/post-apis/addcomment.php";
+const PUBLIC_PROFILE = "http://youRL.site/youRLapi/user-apis/publicprofile.php";
+const FOLLOW = "http://youRL.site/youRLapi/user-apis/follows.php";
+const ALTER_FOLLOW = "http://youRL.site/youRLapi/user-apis/alterfollow.php";
+const LIKE = "http://youRL.site/youRLapi/post-apis/like.php";
+const COMMENT = "http://youRL.site/youRLapi/post-apis/comment.php";
+const ADD_COMMENT = "http://youRL.site/youRLapi/post-apis/addcomment.php";
 
 function ShowPost({id, viewer, poster, title, url, img, likes, comments, caption, date}) {
   

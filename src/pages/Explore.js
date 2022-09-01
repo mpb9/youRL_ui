@@ -8,7 +8,7 @@ import './Home.css';
 import './Form.css';
 import '../helpers/Post.css'
 
-const LAST_USER_POST = "https://you-rl.000webhostapp.com/youRLapi/user-apis/lastuserpost.php";
+const LAST_USER_POST = "http://youRL.site/youRLapi/user-apis/lastuserpost.php";
 
 function Explore({user, isPosting}) {
   const [inputs, setInputs] = useState({
