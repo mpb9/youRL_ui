@@ -35,7 +35,7 @@ function MyPosts({username}) {
     }
     
     return (
-      <Container style={{width: 'inherit', margin: 'auto', padding: '7px', height: '65%'}}>
+      <Container style={{width: 'inherit', margin: 'auto', padding: '7px', height: '60%'}}>
         <h6 style={{backgroundColor:'#2297ff', border:'2px solid black', color:'black', width: 'inherit', marginBottom: '0px', paddingBottom: '2px'}}>{inputs.name}RLs</h6>
         <Row id='mypostrow'>
           <section style={{width:'100%', margin: '0 auto', padding:'0px'}}>

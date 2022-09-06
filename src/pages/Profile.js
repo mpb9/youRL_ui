@@ -106,7 +106,7 @@ function Profile({user}) {
   if(!inputs.edit){
     return(
       <Container style={{ padding:'5px', width:'100%', height:'100%', margin: 'auto'}}>
-        <Row style={{padding:'3px', height:'35%', width:'100%', margin: 'auto', textAlign: 'center'}}>
+        <Row style={{padding:'3px', height:'40%', width:'100%', margin: 'auto', textAlign: 'center'}}>
           <Container id='profBio' >
             <img id='profImg' src={info.img} alt="No Profile Picture"/>
             <h5 style={{ padding:'0px', marginBottom:'0px'}}>{info.fullname}</h5>

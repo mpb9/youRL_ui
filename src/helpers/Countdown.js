@@ -36,9 +36,9 @@ function Countdown({lastTime, username}) {
 
   useEffect(()=>{
     let myInterval = setInterval(() => {
-      if(hours > 24){
-        sethours(24);
-        setminutes(0);
+      if(hours >= 24){
+        sethours(23);
+        setminutes(59);
       }
       if (minutes > 0) {
         setminutes(minutes - 1);
