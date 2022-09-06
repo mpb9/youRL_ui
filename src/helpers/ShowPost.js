@@ -174,12 +174,12 @@ function ShowPost({id, viewer, poster, title, url, img, likes, comments, caption
               <input type='submit' value='Go Back' id='openlink' style={{ borderRadius: '4px'}} onClick={getFeed}/>
             </Row>
             <Row style={{margin: 'auto', height:'fit-content', backgroundColor:'#e497ff', borderRadius:'3px'}}>
-              <Row style={{margin: 'auto', height:'40%'}}>
-                <Col xs={5} style={{padding: '3px', textAlign: 'left'}}>
+              <Row style={{margin: 'auto', height:'40%', padding: '0px'}}>
+                <Col xs={5} style={{margin: 'auto', paddingLeft: '8px', paddingRight: '0px', textAlign: 'left'}}>
                   <img id='pubProPic' src={posterProfile.proPic} alt="User Image"/>
                   <input type='submit' value={posterProfile.follows} id='followBut' onClick={followHandler}/>
                 </Col>
-                <Col xs={7} style={{ padding: '2px', margin: 'auto'}}>
+                <Col xs={7} style={{ padding: '4px', margin: 'auto'}}>
                   <h6 style={{paddingTop:'0px', marginBottom: '0px', fontSize: '110%'}}>{posterProfile.data.fullname}</h6>
                   <h6 style={{paddingTop:'0px', fontSize:'90%'}}>{posterProfile.name}</h6> 
                 </Col>

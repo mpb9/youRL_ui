@@ -187,7 +187,7 @@ function Explore({user, isPosting}) {
                     <br/> 
                     <input type='submit' name='user' value='user' id='searchType'
                       style={{ backgroundColor: filter.user ? '#ff8903' : '#2297ff'}} onClick={getFilters}/>
-                    <input type='submit' name='source' value='youRL source' id='searchType'
+                    <input type='submit' name='source' value='source' id='searchType'
                       style={{ backgroundColor: filter.source ? '#ff8903' : '#2297ff'}} onClick={getFilters}/>
                     <input type='submit' name='title' value='title' id='searchType' 
                     style={{ backgroundColor: filter.title ? '#ff8903' : '#2297ff'}} onClick={getFilters}/>

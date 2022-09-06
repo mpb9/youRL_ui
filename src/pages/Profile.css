@@ -81,10 +81,7 @@
   color: black;
 }
 #pubProPic{
-  max-width: 90px;
-  max-height: 90px;
-  min-width: 0px;
-  min-height: 0px;
+  width: 90%;
   border: 1px solid #f2e1c0;
   border-radius: 2px;
   margin-bottom: 3px;
