@@ -4,6 +4,7 @@ import Profile from './Profile';
 import './Home.css';
 import Login from './Login';
 import Explore from './Explore';
+import youRLheader from "../youRL-header.png";
 
 function Home({username}) {
     const [inputs, setInputs] = useState({
@@ -24,8 +25,8 @@ function Home({username}) {
             <Row fluid="true" id='navrow'>
                 <Col xs={3} style={{margin:'auto', textAlign:'center'}}>
                 </Col>
-                <Col xs={6} style={{textAlign: 'center'}}>
-                    <h2>youRL</h2>
+                <Col xs={6} style={{margin: '0 auto', height: '100%', textAlign:'center', padding: '0px'}}>
+                    <img src={youRLheader} height='100%'></img>
                 </Col>
                 <Col xs={3} style={{textAlign: 'right'}}>
                     <Button id='logoutBut' onClick={(event) => LogoutHandler(event)}> Logout </Button>
