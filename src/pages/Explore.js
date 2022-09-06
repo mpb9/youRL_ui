@@ -55,11 +55,26 @@ function Explore({user, isPosting}) {
     })
     .then((result) => {
       if(result.data !== true) {
-        const currTime = new Date().getTime();
+        const curr = new Date();
+        const year = curr.getFullYear();
+        const month = curr.getMonth();
+        const day = curr.getDate();
+        const hour = curr.getHours();
+        const mins = curr.getMinutes();
+
+        const nextPostTime = Date.UTC(year, month, day+1);
         const tempVal = new Date(result.data).getTime();
-        const name = 'lastPost';
-        const value = 1440 - Math.floor(((currTime - tempVal)/1000)/60);
-        setInputs(values => ({...values, [name]: value}));
+        const currTime = Date.UTC(year, month, day, hour, mins);
+
+        if((nextPostTime - tempVal)/1000/60/60 < 24){
+          const name = 'lastPost';
+          const value = (nextPostTime - currTime)/1000/60;
+          setInputs(values => ({...values, [name]: value}));
+        } else {
+          const name = 'lastPost';
+          const value = 0;
+          setInputs(values => ({...values, [name]: value}));
+        }
       }
     })
     .catch((error) => {

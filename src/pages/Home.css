@@ -170,7 +170,7 @@
     padding-bottom: 2px;
 }
 #postInput{
-    width:max-content;
+    width: 80%;
     height: min-content;
     padding-top: 5px;
     padding-bottom: 5px;
