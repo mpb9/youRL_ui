@@ -62,9 +62,12 @@ function Explore({user, isPosting}) {
         const hour = curr.getHours();
         const mins = curr.getMinutes();
 
-        const nextPostTime = Date.UTC(year, month, day+1);
-        const tempVal = new Date(result.data).getTime();
-        const currTime = Date.UTC(year, month, day, hour, mins);
+        const nextPostTime = new Date(year, month, day+1);
+        const temp = new Date(result.data).getTime();
+        const currTime = new Date(year, month, day, hour, mins).getTime();
+
+        let diff = nextPostTime.getTimezoneOffset()*60*1000;
+        let tempVal = temp - diff;
 
         if((nextPostTime - tempVal)/1000/60/60 < 24){
           const name = 'lastPost';
