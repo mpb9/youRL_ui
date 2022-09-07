@@ -144,6 +144,10 @@ function ShowPost({id, viewer, poster, title, url, img, likes, comments, caption
     })
     .then((result) => {
       const commented = parseInt(posterProfile.comCount)+1;
+      if(posterProfile.newComment == ""){
+        commented = parseInt(posterProfile.comCount);
+      } 
+
       setPosterProfile(values => ({...values, comCount: commented}));
       setPosterProfile(values => ({...values, newComment: ''}));
 
