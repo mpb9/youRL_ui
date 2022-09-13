@@ -30,11 +30,11 @@ function Profile({user}) {
       data: inputs
     })
     .then((result) => {
-      setInfo(values => ({...values, ['email']: result.data.email}));
-      setInfo(values => ({...values, ['fullname']: result.data.fullname}));
-      setInfo(values => ({...values, ['bio']: result.data.bio}));
-      setInfo(values => ({...values, ['img']: result.data.img}));
-      setInfo(values => ({...values, ['lastImg']: result.data.img}));
+      setInfo(values => ({...values, email: result.data.email}));
+      setInfo(values => ({...values, fullname: result.data.fullname}));
+      setInfo(values => ({...values, bio: result.data.bio}));
+      setInfo(values => ({...values, img: result.data.img}));
+      setInfo(values => ({...values, lastImg: result.data.img}));
     })
     .catch((error) => {
       console.log(error);
@@ -43,9 +43,7 @@ function Profile({user}) {
 
   const EditHandler = (event)  => {   // HANDLES EDIT BUTTON CLICK
     event.preventDefault();
-    const name2 = 'edit';
-    const value2 = true;
-    setInputs(values => ({...values, [name2]: value2}))
+    setInputs(values => ({...values, edit: true}))
   }
 
   const imgHandler = (event) => { 
@@ -67,38 +65,34 @@ function Profile({user}) {
 
   const DoneEditingHandler = (event)  => {   
     event.preventDefault();
+    
     axios({
       method: "post",
       url: `${NEW_PROFILE_INFO}`,
       headers: { "content-type": "application/json" },
       data: info
-    }).then((result) => {
-      console.log(result.data);
     }).catch((error) => {
       console.log(error);
     });
 
-    if(info.img.length == 0){
+    if(info.img.length === 0){
       setInfo(values => ({...values, img: info.lastImg}));
     } else {
       setInfo(values => ({...values, lastImg: info.img}));
     }
-    const name2 = 'edit';
-    const value2 = false;
-    setInputs(values => ({...values, [name2]: value2}));
+
+    setInputs(values => ({...values, edit: false}));
   }
   const CancelEditingHandler = (event)  => {   
     event.preventDefault();
 
-    if(info.img.length == 0){
+    if(info.img.length === 0){
       setInfo(values => ({...values, img: info.lastImg}));
     } else {
       setInfo(values => ({...values, lastImg: info.img}));
     }
-    
-    const name2 = 'edit';
-    const value2 = false;
-    setInputs(values => ({...values, [name2]: value2}));
+
+    setInputs(values => ({...values, edit: false}));
   }
 
   
@@ -108,7 +102,7 @@ function Profile({user}) {
       <Container style={{ padding:'5px', width:'100%', height:'100%', margin: 'auto'}}>
         <Row style={{padding:'3px', height:'40%', width:'100%', margin: 'auto', textAlign: 'center'}}>
           <Container id='profBio' >
-            <img id='profImg' src={info.img} alt="No Profile Picture"/>
+            <img id='profImg' src={info.img} alt=""/>
             <h5 style={{ padding:'0px', marginBottom:'0px'}}>{info.fullname}</h5>
              {info.bio}
             <h5 style={{margin:'auto', paddingTop: '10px'}}>
@@ -125,7 +119,7 @@ function Profile({user}) {
       <Container style={{ padding:'5px', width:'100%', margin: 'auto'}}>
           <h4>Edit: {user}</h4>
           <form action='#' style={{width:'90%',  margin:'auto'}}>
-            <img id='profImg' src={info.img} alt="No Profile Picture"/>
+            <img id='profImg' src={info.img} alt=""/>
             <h6>Profile Picture</h6> 
             <input type="text" id="editNameInput" placeholder="image link" value={info.img || ""} onChange={imgHandler}/>
             <h6>Full Name</h6>

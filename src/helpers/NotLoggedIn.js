@@ -82,20 +82,20 @@ function NotLoggedIn() {
                 <input type='text' placeholder="search" value={filter.query || ""} 
                         id='searchInput' onChange={searchHandler}/>
 
-                <h6 style={{marginLeft: '10px', paddingTop:'10px'}}>
-                  Don't Include:
+                <h6 style={{marginLeft: '10px', paddingTop:'10px', paddingBottom:'10px'}}>
+                  Including:
                   <br/>
-                  <input type='submit' name='user' value='user' id='searchType'
-                    style={{ backgroundColor: filter.user ? '#ff8903' : '#2297ff'}} onClick={getFilters}/>
-                  <input type='submit' name='source' value='source' id='searchType'
-                    style={{ backgroundColor: filter.source ? '#ff8903' : '#2297ff'}} onClick={getFilters}/>
-                  <input type='submit' name='title' value='title' id='searchType' 
-                  style={{ backgroundColor: filter.title ? '#ff8903' : '#2297ff'}} onClick={getFilters}/>
-                  <input type='submit' name='caption' value='caption' id='searchType'
-                  style={{ backgroundColor: filter.caption ? '#ff8903' : '#2297ff'}} onClick={getFilters}/>
+                  <input type='submit' name='user' value='users' id='searchType'
+                    style={{ backgroundColor: filter.user ? '#2297ff' : '#ff8903'}} onClick={getFilters}/>
+                  <input type='submit' name='source' value='sources' id='searchType'
+                    style={{ backgroundColor: filter.source ? '#2297ff' : '#ff8903'}} onClick={getFilters}/>
+                  <input type='submit' name='title' value='titles' id='searchType' 
+                  style={{ backgroundColor: filter.title ? '#2297ff' : '#ff8903'}} onClick={getFilters}/>
+                  <input type='submit' name='caption' value='captions' id='searchType'
+                  style={{ backgroundColor: filter.caption ? '#2297ff' : '#ff8903'}} onClick={getFilters}/>
                 </h6>
 
-                <input style={{marginLeft: '7px'}} type="submit" value="Search" id='postBut' onClick={getSearch} />
+                <input style={{marginLeft: '7px', fontWeight:'500'}} type="submit" value="Search" id='postBut' onClick={getSearch} />
 
               </form>
             </Container>

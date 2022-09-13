@@ -81,12 +81,38 @@
   color: black;
 }
 #pubProPic{
-  width: 80%;
+  width: 85%;
   border: 1px solid #f2e1c0;
   border-radius: 2px;
   margin-bottom: 3px;
   margin-top: 10px;
 }
+#followBut{
+  width:max-content;
+  height: min-content;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-right: 4px;
+  padding-left: 4px;
+  margin-top: 3px;
+  margin-left: 3px;
+  background-color: #2297ff;
+  border: 1px solid black;
+  border-radius: 7px;
+  color: #dbedd9;
+  font-size: small;
+}
+#cantFollow{
+  margin-left: 3px;
+  width: 80%;
+  text-align: center;
+  padding: 0px;
+  font-size: 80%;
+  color: rgba(26, 26, 26, 0.75);
+  font-style: italic;
+}
+
+
 #editNameInput{
   width: max-content;
   width: 90%;
@@ -112,7 +138,6 @@
   border-radius: 7px;
   font-size: small;
 }
-
 #fileInput{
   margin-left: 5px;
   max-width: 90%;

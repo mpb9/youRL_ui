@@ -6,7 +6,6 @@ import './Home.css';
 import './Form.css';
 
 const NEW_POST = "http://youRL.site/youRLapi/post-apis/newpost.php";
-// post doesnt include: time or tags
 
 function Post({username, preview}) {
   const [inputs, setInputs] = useState({

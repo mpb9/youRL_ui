@@ -26,6 +26,23 @@
   margin-bottom: 10px;
   font-size: 90%;
 }
+#cantLike{
+  margin-left: 7px;
+  margin-bottom: 7px;
+  margin-top: -3px;
+  padding: 0px;
+  font-size: 92%;
+  color: #2297ff;
+}
+#cantComment{
+  margin-left: 7px;
+  margin-bottom: 7px;
+  margin-top: -3px;
+  padding: 0px;
+  font-size: 98%;
+  color: rgba(26, 26, 26, 0.9);
+  font-style: italic;
+}
 #openlink{
   background-color: #2297ff;
   border: 1px solid black;
@@ -52,21 +69,6 @@
   margin-left:2px;
   padding: 3px;
   margin-bottom: 5px;
-}
-#followBut{
-  width:max-content;
-  height: min-content;
-  padding-top: 1px;
-  padding-bottom: 1px;
-  padding-right: 4px;
-  padding-left: 4px;
-  margin-top: 3px;
-  margin-left: 3px;
-  background-color: #2297ff;
-  border: 1px solid black;
-  border-radius: 7px;
-  color: #dbedd9;
-  font-size: small;
 }
 
 
@@ -129,6 +131,7 @@
   border: 1px solid black;
   color: black;
 }
+input.usernameLink:hover, input.usernameLink:active {color:#2297ff}
 
 #comments{
   background-color: #ffffff;

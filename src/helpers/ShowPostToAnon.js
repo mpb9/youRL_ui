@@ -5,14 +5,11 @@ import './Post.css';
 import '../pages/Profile.css'
 
 const PUBLIC_PROFILE = "http://youRL.site/youRLapi/user-apis/publicprofile.php";
-const FOLLOW = "http://youRL.site/youRLapi/user-apis/follows.php";
-const ALTER_FOLLOW = "http://youRL.site/youRLapi/user-apis/alterfollow.php";
-const LIKE = "http://youRL.site/youRLapi/post-apis/like.php";
 const COMMENT = "http://youRL.site/youRLapi/post-apis/comment.php";
-const ADD_COMMENT = "http://youRL.site/youRLapi/post-apis/addcomment.php";
 const COMMENTER_PROFILE = "http://youRL.site/youRLapi/user-apis/commenterprofile.php";
 
-function ShowPost({id, viewer, poster, title, url, img, likes, comments, caption, date}) {
+
+function ShowPostToAnon({id, viewer, poster, title, url, img, likes, comments, caption, date}) {
   
   const [posterProfile, setPosterProfile] = useState({
     user: viewer,
@@ -26,6 +23,7 @@ function ShowPost({id, viewer, poster, title, url, img, likes, comments, caption
     comCount: comments,
     newComment: '',
     proPic: '',
+    cantLike: '',
     commenter: '',
     data: []
   });
@@ -34,7 +32,7 @@ function ShowPost({id, viewer, poster, title, url, img, likes, comments, caption
     if(posterProfile.commenter !== ''){
       getCommenterProfile();
     }
-  }, [posterProfile.likeCount, posterProfile.comCount, posterProfile.commenter]);
+  }, [posterProfile.likeCount, posterProfile.comCount, posterProfile.cantLike, posterProfile.commenter]);
 
   const getProfile = (event) => {
     event.preventDefault();
@@ -48,20 +46,7 @@ function ShowPost({id, viewer, poster, title, url, img, likes, comments, caption
       setPosterProfile(values => ({...values, data: result.data}));
       setPosterProfile(values => ({...values, show: true}));
       setPosterProfile(values => ({...values, proPic: result.data.proimg}));
-
-      axios({
-        method: "post",
-        url: `${FOLLOW}`,
-        headers: { "content-type": "application/json" },
-        data: posterProfile
-      })
-      .then((result) => {
-        setPosterProfile(values => ({...values, follows: result.data}));
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-
+      setPosterProfile(values => ({...values, cantLike: ''}));
     })
     .catch((error) => {
       console.log(error);
@@ -85,36 +70,8 @@ function ShowPost({id, viewer, poster, title, url, img, likes, comments, caption
       setPosterProfile(values => ({...values, data: result.data}));
       setPosterProfile(values => ({...values, show: true}));
       setPosterProfile(values => ({...values, proPic: result.data.proimg}));
-
-      axios({
-        method: "post",
-        url: `${FOLLOW}`,
-        headers: { "content-type": "application/json" },
-        data: posterProfile
-      })
-      .then((result) => {
-        setPosterProfile(values => ({...values, follows: result.data}));
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-  }
-
-  const followHandler = (event) => {
-    event.preventDefault();
-    axios({
-      method: "post",
-      url: `${ALTER_FOLLOW}`,
-      headers: { "content-type": "application/json" },
-      data: posterProfile
-    })
-    .then((result) => {
-      setPosterProfile(values => ({...values, follows: result.data}));
+      setPosterProfile(values => ({...values, cantLike: ''}));
+      setPosterProfile(values => ({...values, commenter: ''}));
     })
     .catch((error) => {
       console.log(error);
@@ -123,26 +80,7 @@ function ShowPost({id, viewer, poster, title, url, img, likes, comments, caption
 
   const likeHandler = (event) => {
     event.preventDefault();
-    
-    axios({
-      method: "post",
-      url: `${LIKE}`,
-      headers: { "content-type": "application/json" },
-      data: posterProfile
-    })
-    .then((result) => {
-      if(result.data) {
-        const liked = parseInt(posterProfile.likeCount)+1;
-        setPosterProfile(values => ({...values, likeCount: liked}));
-      } else {
-        const liked = parseInt(posterProfile.likeCount)-1;
-        setPosterProfile(values => ({...values, likeCount: liked}));
-      }
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-    
+    setPosterProfile(values => ({...values, cantLike: 'Log In / Signup to Like'}));
   }
   
   const commentPage = (event) => {
@@ -156,6 +94,7 @@ function ShowPost({id, viewer, poster, title, url, img, likes, comments, caption
     .then((result) => {
       setPosterProfile(values => ({...values, commentPage: result.data}));
       setPosterProfile(values => ({...values, showComments: true}));
+      setPosterProfile(values => ({...values, cantLike: ''}));
     })
     .catch((error) => {
       console.log(error);
@@ -165,56 +104,15 @@ function ShowPost({id, viewer, poster, title, url, img, likes, comments, caption
   const noComments = (event)=>{
     event.preventDefault();
     setPosterProfile(values => ({...values, showComments: false}));
+    setPosterProfile(values => ({...values, cantLike: ''}));
   }
 
   const getFeed = (event) => {
     event.preventDefault();
     setPosterProfile(values => ({...values, show: false}));
-    setPosterProfile(values => ({...values, commenter: ''}));
   }
 
-  const handleComment = (event) => {
-    const value = event.target.value;
-    setPosterProfile(values => ({...values, newComment: value}))
-  }
-
-  const addComment = (event) => {
-    event.preventDefault();
-    axios({
-      method: "post",
-      url: `${ADD_COMMENT}`,
-      headers: { "content-type": "application/json" },
-      data: posterProfile
-    })
-    .then((result) => {
-      let commented = parseInt(posterProfile.comCount)+1;
-      if(posterProfile.newComment === ""){
-        commented = parseInt(posterProfile.comCount);
-      } 
-
-      setPosterProfile(values => ({...values, comCount: commented}));
-      setPosterProfile(values => ({...values, newComment: ''}));
-
-      axios({
-        method: "post",
-        url: `${COMMENT}`,
-        headers: { "content-type": "application/json" },
-        data: posterProfile
-      })
-      .then((result) => {
-        setPosterProfile(values => ({...values, commentPage: result.data}));
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-  }
   
-
   if(posterProfile.show){
     return(
       <Container id='profCont'>     
@@ -227,8 +125,6 @@ function ShowPost({id, viewer, poster, title, url, img, likes, comments, caption
               <Row style={{margin: 'auto', height:'40%', padding: '0px'}}>
                 <Col xs={5} style={{margin: 'auto', paddingLeft: '8px', paddingRight: '0px', textAlign: 'left'}}>
                   <img id='pubProPic' src={posterProfile.proPic} alt=""/>
-                  <input type='submit' value={posterProfile.follows} id='followBut' 
-                   style={{display: posterProfile.user === posterProfile.data.username ? 'none' : 'inline'}}onClick={followHandler}/>
                 </Col>
                 <Col xs={7} style={{ padding: '4px', margin: 'auto'}}>
                   <h6 style={{paddingTop:'0px', marginBottom: '0px', fontSize: '110%'}}>{posterProfile.data.fullname}</h6>
@@ -273,6 +169,7 @@ function ShowPost({id, viewer, poster, title, url, img, likes, comments, caption
             </p>
             <Button id='link' onClick={likeHandler}>{posterProfile.likeCount} Likes</Button>
             <Button id='link' onClick={noComments}>Hide Comments</Button>
+            <h6 id='cantLike'>{posterProfile.cantLike}</h6>
           </Col>
         </Row>
         <Row style={{margin: '0 auto', paddingTop: '2px'}}>
@@ -288,11 +185,7 @@ function ShowPost({id, viewer, poster, title, url, img, likes, comments, caption
           </section>  
         </Row>
         <Row style={{margin:'0 auto', padding:'10px'}}>
-          <form action='#'style={{margin:'0 auto', padding:'0px'}} >
-            <textarea id='commentInput' type='text' placeholder="comment" maxLength="200" value={posterProfile.newComment || ""} onChange={handleComment} />
-            <br/>
-            <input id='commentBut' style={{margin: 'auto'}} type="submit" value="Comment" onClick={addComment} />
-          </form>
+          <h6 id='cantComment'>Log In / Signup to Comment</h6>
         </Row>
       </Container>
     );
@@ -303,7 +196,7 @@ function ShowPost({id, viewer, poster, title, url, img, likes, comments, caption
          <h6 style={{padding:'0px', marginBottom:'1px', color:'black', fontWeight:'bold'}}>{date}</h6>
       </Row>  
       <Row style={{margin: 'auto'}}>
-        <Col xs={5} style={{textAlign: 'center', margin: 'auto', paddingTop: '5px'}}>
+      <Col xs={5} style={{textAlign: 'center', margin: 'auto', paddingTop: '5px'}}>
           <img id='postImg' src={img} alt="Couldn't Generate"/>
           <h5 style={{paddingTop:'5px'}}>{title}</h5> 
           <Button id='openlink' onClick={() => window.open(url)}>Open Link</Button> 
@@ -315,6 +208,7 @@ function ShowPost({id, viewer, poster, title, url, img, likes, comments, caption
           </p>
           <Button id='link' onClick={likeHandler}>{posterProfile.likeCount} Likes</Button>
           <Button id='link' onClick={commentPage}>{posterProfile.comCount} Comments</Button>
+          <h6 id='cantLike'>{posterProfile.cantLike}</h6>
         </Col>
       </Row>
     </Container>
@@ -322,4 +216,4 @@ function ShowPost({id, viewer, poster, title, url, img, likes, comments, caption
   }
 }
 
-export default ShowPost;
+export default ShowPostToAnon;

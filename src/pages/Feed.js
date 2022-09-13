@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import ShowPost from '../helpers/ShowPost';
+import ShowPostToAnon from '../helpers/ShowPostToAnon';
 import axios from 'axios';
 import './Home.css';
 import './Form.css';
@@ -68,13 +69,24 @@ function Feed({username, friends, incUser, incTitle, incSource, incCaption, sear
         });
       }
     }
-    return (
-      <section style={{width:'100%', margin: '0 auto', padding:'0px'}}>
-        {inputs.posts.map((post) =>
-          <ShowPost key={post.id} {...post} />
-        )}  
-      </section>      
-    );
+
+    if(inputs.name !== 'anonymous'){
+      return (
+        <section style={{width:'100%', margin: '0 auto', padding:'0px'}}>
+          {inputs.posts.map((post) =>
+            <ShowPost key={post.id} {...post} />
+          )}  
+        </section>      
+      );
+    } else {
+      return (
+        <section style={{width:'100%', margin: '0 auto', padding:'0px'}}>
+          {inputs.posts.map((post) =>
+            <ShowPostToAnon key={post.id} {...post} />
+          )}  
+        </section>      
+      );
+    }
 }
 
 export default Feed;

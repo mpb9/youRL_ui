@@ -71,7 +71,7 @@ function SignUp() {
         <Col xs={3} style={{margin:'auto', textAlign:'center'}}>
         </Col>
         <Col xs={6} style={{margin: '0 auto', height: '100%', textAlign:'center', padding: '0px'}}>
-            <img src={youRLheader} height='100%'></img>
+            <img src={youRLheader} height='100%' alt=""></img>
         </Col>
         <Col xs={3} style={{textAlign: 'right'}}>
         </Col>
@@ -118,7 +118,7 @@ function SignUp() {
           <Col xs={3} style={{margin:'auto', textAlign:'center'}}>
           </Col>
           <Col xs={6} style={{margin: '0 auto', height: '100%', textAlign:'center', padding: '0px'}}>
-              <img src={youRLheader} height='100%'></img>
+              <img src={youRLheader} height='100%' alt=""></img>
           </Col>
           <Col xs={3} style={{textAlign: 'right'}}>
           </Col>
